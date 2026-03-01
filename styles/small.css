@@ -1,0 +1,83 @@
+body {
+    font-family: 'YourChosenFont', sans-serif;
+    /* Replace with your chosen font */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+nav {
+    display: none;
+    /* Hidden by default for small screens */
+    flex-direction: column;
+}
+
+nav.open {
+    display: flex;
+}
+
+#hamburger,
+.hamburger {
+    display: block;
+    /* Show hamburger icon on small screens */
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    nav {
+        display: flex;
+        /* Show horizontal navigation on larger screens */
+        flex-direction: row;
+    }
+
+    #hamburger,
+    .hamburger {
+        display: none;
+        /* Hide hamburger icon on larger screens */
+    }
+}
+
+main {
+    padding: 1rem;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+.course-card {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+footer {
+    padding: 1rem;
+    text-align: center;
+}
+
+.social-links a {
+    margin: 0 0.5rem;
+}
+
+.completed {
+    background-color: #d4edda;
+    /* Light green background for completed courses */
+}
+
+.not-completed {
+    background-color: #f8d7da;
+    /* Light red background for not completed courses */
+}

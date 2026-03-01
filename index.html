@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Home page for WDD231 course project">
+    <meta name="author" content="Your Name">
+    <title>Home - WDD231</title>
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/small.css">
+    <link rel="stylesheet" href="styles/large.css">
+    <script src="scripts/navigation.js" defer></script>
+    <script src="scripts/date.js" defer></script>
+    <script src="scripts/course-data.js" defer></script>
+    <script src="scripts/courses.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <img src="images/logo.svg" alt="Site Logo" />
+        <span>Your Name</span>
+        <button id="hamburger" aria-label="Toggle navigation">☰</button>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="chamber.html">Chamber</a></li>
+            <li><a href="final.html">Final</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Home</h1>
+        <section>
+            <h2>Welcome to WDD231</h2>
+            <p>This is the home page for the WDD231 course project.</p>
+        </section>
+        <section>
+            <h2>Course Information</h2>
+            <div class="course-filters">
+                <button id="all-courses">All Courses</button>
+                <button id="wdd-courses">WDD Courses</button>
+                <button id="cse-courses">CSE Courses</button>
+            </div>
+            <div id="course-container"></div>
+            <p id="total-credits"></p>
+        </section>
+        <section>
+            <h2>About This Project</h2>
+            <p>This project showcases the skills learned in the WDD231 course.</p>
+        </section>
+    </main>
+    <footer>
+        <div>
+            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+            <a href="https://twitter.com/yourusername" target="_blank">Twitter</a>
+        </div>
+        <p>&copy; <span id="currentyear"></span> Your Name</p>
+        <p>Last modified: <span id="lastModified"></span></p>
+    </footer>
+    <script>
+        document.getElementById("currentyear").innerHTML = new Date().getFullYear();
+        document.getElementById("lastModified").innerHTML = document.lastModified;
+    </script>
+</body>
+
+</html>
