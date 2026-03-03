@@ -4,65 +4,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Home page for WDD231 course project">
-    <meta name="author" content="Your Name">
-    <title>Home - WDD231</title>
+    <meta name="description"
+        content="Denelson Clerville is an aspiring full-stack developer from Port-au-Prince, Haiti, with a background in business administration and digital marketing.">
+    <meta name="author" content="Denelson Clerville">
+    <title>Denelson Clerville | Full-Stack Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="images/favicon.ico">
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/small.css">
     <link rel="stylesheet" href="styles/large.css">
-    <script src="scripts/navigation.js" defer></script>
-    <script src="scripts/date.js" defer></script>
-    <script src="scripts/course-data.js" defer></script>
-    <script src="scripts/courses.js" defer></script>
-</head>
 
+    <script src="scripts/navigation.js" defer></script>
+    <script src="scripts/course-data.js" defer></script>
+</head>
 <body>
     <header>
-        <img src="images/logo.svg" alt="Site Logo" />
-        <span>Your Name</span>
-        <button id="hamburger" aria-label="Toggle navigation">☰</button>
+        <button id="hamburger" aria-label="Toggle navigation menu">☰</button>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#" aria-current="page">Home</a></li>
+                <li><a href="chamber.html">Chamber Project</a></li>
+                <li><a href="final.html">Final Project</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="chamber.html">Chamber</a></li>
-            <li><a href="final.html">Final</a></li>
-        </ul>
-    </nav>
+
     <main>
         <h1>Home</h1>
-        <section>
-            <h2>Welcome to WDD231</h2>
-            <p>This is the home page for the WDD231 course project.</p>
-        </section>
-        <section>
-            <h2>Course Information</h2>
-            <div class="course-filters">
-                <button id="all-courses">All Courses</button>
-                <button id="wdd-courses">WDD Courses</button>
-                <button id="cse-courses">CSE Courses</button>
+
+        <!-- About Me -->
+        <section class="about-me">
+            <h2 class="section-header">About Me</h2>
+            <div class="section-content">
+                <p>
+                    Hello, my name is Denelson Clerville from Port-au-Prince, Haiti.
+                    I am an aspiring full-stack developer passionate about building
+                    modern and impactful digital solutions.
+                </p>
+                <p>
+                    With a background in business administration and social media marketing,
+                    I combine technical knowledge with strategic thinking. I am continuously
+                    strengthening my front-end and back-end skills while exploring innovative
+                    ways to use technology to create value.
+                </p>
             </div>
-            <div id="course-container"></div>
-            <p id="total-credits"></p>
         </section>
-        <section>
-            <h2>About This Project</h2>
-            <p>This project showcases the skills learned in the WDD231 course.</p>
+
+        <!-- Student Photo -->
+        <section class="photo-section">
+            <h2 class="section-header">Student Photo</h2>
+            <div class="photo-box">
+                <img src="images/profile.png" alt="Portrait of Denelson Clerville" loading="lazy">
+            </div>
         </section>
+
+        <!-- Courses -->
+        <section class="courses-section">
+            <h2 class="section-header">Web Certificate Courses</h2>
+            <div class="section-content">
+
+                <div class="course-filters">
+                    <button id="all-courses">All</button>
+                    <button id="cse-courses">CSE</button>
+                    <button id="wdd-courses">WDD</button>
+                </div>
+
+                <div id="course-container"></div>
+                <p id="total-credits"></p>
+
+            </div>
+        </section>
+
     </main>
+
+    <div class="social-links">
+
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+            <i class="fa-brands fa-github"></i>
+        </a>
+
+        <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer"
+            aria-label="LinkedIn Profile">
+            <i class="fa-brands fa-linkedin"></i>
+        </a>
+
+        <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer"
+            aria-label="Twitter Profile">
+            <i class="fa-brands fa-x-twitter"></i>
+        </a>
+    </div>
     <footer>
-        <div>
-            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
-            <a href="https://twitter.com/yourusername" target="_blank">Twitter</a>
-        </div>
-        <p>&copy; <span id="currentyear"></span> Your Name</p>
+        <p>&copy; <span id="currentyear"></span> Denelson Clerville • Petion-Ville, Haiti</p>
         <p>Last modified: <span id="lastModified"></span></p>
+
     </footer>
-    <script>
-        document.getElementById("currentyear").innerHTML = new Date().getFullYear();
-        document.getElementById("lastModified").innerHTML = document.lastModified;
-    </script>
+
 </body>
 
 </html>

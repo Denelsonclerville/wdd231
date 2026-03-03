@@ -9,7 +9,7 @@ const courseData = [
         technology: [
             'Python'
         ],
-        completed: false
+        completed: true
     },
     {
         subject: 'WDD',
@@ -22,7 +22,7 @@ const courseData = [
             'HTML',
             'CSS'
         ],
-        completed: false
+        completed: true
     },
     {
         subject: 'CSE',
@@ -34,7 +34,7 @@ const courseData = [
         technology: [
             'Python'
         ],
-        completed: false
+        completed: true
     },
     {
         subject: 'CSE',
@@ -46,7 +46,7 @@ const courseData = [
         technology: [
             'C#'
         ],
-        completed: false
+        completed: true
     },
     {
         subject: 'WDD',
@@ -60,7 +60,7 @@ const courseData = [
             'CSS',
             'JavaScript'
         ],
-        completed: false
+        completed: true
     },
     {
         subject: 'WDD',
@@ -77,3 +77,57 @@ const courseData = [
         completed: false
     }
 ];
+
+function displayCourses(filter) {
+    const courseContainer = document.getElementById("course-container");
+    courseContainer.innerHTML = ""; // Clear existing cards
+
+    let totalCredits = 0;
+
+    courseData.forEach(course => {
+        // skip if filter is not 'all' and doesn't match subject
+        if (filter !== "all" && course.subject.toLowerCase() !== filter) {
+            return;
+        }
+
+        const card = document.createElement("div");
+        card.classList.add("course-card");
+        card.dataset.subject = course.subject; // used for highlighting
+        // add background class based on subject (also 'all' for default)
+        const bgClass = course.subject.toLowerCase();
+        card.classList.add(`bg-${bgClass}`);
+        // show subject and number with a space, number wrapped for styling
+        const id = `${course.subject} <span class="course-number">${course.number}</span>`;
+        card.innerHTML = `<h3>${id}</h3>`;
+        courseContainer.appendChild(card);
+
+        totalCredits += course.credits;
+    });
+
+    // update credits paragraph
+    document.getElementById("total-credits").textContent = `The total credits for courses listed above is ${totalCredits}`;
+
+    applyHighlight(filter);
+}
+
+function applyHighlight(type) {
+    const cards = document.querySelectorAll(".course-card");
+    cards.forEach(card => {
+        card.classList.remove("highlight-wdd", "highlight-cse");
+        const subj = card.dataset.subject;
+        if (type === "wdd" && subj === "WDD") {
+            card.classList.add("highlight-wdd");
+        } else if (type === "cse" && subj === "CSE") {
+            card.classList.add("highlight-cse");
+        }
+    });
+}
+
+const allBtn = document.getElementById("all-courses");
+const wddBtn = document.getElementById("wdd-courses");
+const cseBtn = document.getElementById("cse-courses");
+allBtn.addEventListener("click", () => displayCourses("all"));
+wddBtn.addEventListener("click", () => displayCourses("wdd"));
+cseBtn.addEventListener("click", () => displayCourses("cse"));
+
+displayCourses("all");

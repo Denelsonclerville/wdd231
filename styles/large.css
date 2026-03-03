@@ -1,117 +1,183 @@
-<
-body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f9fafb;
-}
+/* make headings and important elements span both columns on desktop */
+@media (min-width: 1024px) {
 
-.container {
-    padding: 0 20px;
-}
+    main h1,
+    .courses-section {
+        grid-column: 1 / -1;
+    }
 
-.main-header {
-    background: #ffffff;
-    padding: 15px 0;
-    border-bottom: 1px solid #eee;
-}
+    /* section containers should have a light background and padding */
+    .about-me,
+    .photo-section {
+        background-color: #ddd;
+        padding: 1rem;
+        border-radius: 4px;
+    }
 
-/* Hide Desktop Nav on Mobile */
-.nav-menu {
-    display: none;
-}
+    /* keep section headers full width inside each section */
+    .about-me .section-header,
+    .photo-section .section-header {
+        margin: -1rem -1rem 1rem;
+        /* extend header to section edges */
+        padding: 0.75rem;
+    }
 
-.logo img {
-    height: 40px;
-}
+        .social-links {
+        text-align: center;
+        margin-bottom: 15px;
+    }
 
-.hero {
-    padding: 40px 0;
-    text-align: center; /* Center everything on mobile */
-}
+    .social-links a {
+        font-size: 1.8rem;
+        margin: 0 12px;
+        color: #000;
+        transition: 0.3s ease;
+    }
 
-.hero-content h1 {
-    font-size: 28px;
-    color: #111;
-    line-height: 1.2;
-}
+    .social-links a:hover {
+        transform: scale(1.2);
+    }
 
-.hero-image img {
-    width: 100%;
-    margin-top: 30px;
-    border-radius: 12px;
-}
+    .social-links a:nth-child(1):hover {
+        color: #333;
+    }
 
-/* Toggle visibility of specific images */
-.img-desktop { display: none; }
-.img-mobile { display: block; }
+    .social-links a:nth-child(2):hover {
+        color: #0077b5;
+    }
 
-.cta-group {
-    display: flex;
-    flex-direction: column; /* Stack buttons on mobile */
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.btn-primary {
-    background: #2563eb;
-    color: white;
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
+    .social-links a:nth-child(3):hover {
+        color: #000;
+    }
 }
 
 /* =========================================
    2. DESKTOP VERSION (Screens 1024px+)
    ========================================= */
 @media (min-width: 1024px) {
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
+    header {
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+        background-color: #333;
+        color: #fff;
     }
 
-    /* Show Nav on Desktop */
-    .nav-menu {
+    header .site-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    nav {
         display: block;
     }
 
-    .nav-menu ul {
+    nav ul {
         display: flex;
         list-style: none;
-        gap: 30px;
+        gap: 2rem;
+        margin: 0;
+        padding: 0;
     }
 
-    .mobile-menu-btn {
-        display: none; /* Hide hamburger on desktop */
+    nav ul li a {
+        color: #fff;
+        text-decoration: none;
     }
 
-    /* Hero side-by-side layout */
-    .hero .container {
+    #hamburger {
+        display: none;
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 2rem;
+        padding: 2rem 4rem;
+    }
+
+    .about-me,
+    .photo-section {
+        max-width: 100%;
+    }
+
+    .photo-box {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .photo-box img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        display: block;
+    }
+
+    .course-filters {
+        justify-content: center;
+    }
+
+    @media (min-width: 1024px) {
+        .course-filters {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+        }
+
+        .course-filters button {
+            width: 100%;
+        }
+    }
+
+    .course-card {
+        width: 80%;
+        max-width: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        border-radius: 8px;
+    }
+
+    /* highlight filters */
+    .highlight-wdd {
+        background-color: #a0c4ff;
+    }
+
+    .highlight-cse {
+        background-color: #a0c4ff;
+    }
+
+    /* layout courses in three columns on desktop */
+    #course-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    footer {
+        padding: 2rem;
+        background-color: #ddd;
+    }
+}
+
+/* mobile-to-desktop overrides originally in small.css */
+@media (min-width: 768px) {
+    nav {
+        display: flex;
+        /* Show horizontal navigation on larger screens */
         flex-direction: row;
-        text-align: left;
-        padding: 80px 0;
     }
 
-    .hero-content {
-        width: 50%;
+    #hamburger,
+    .hamburger {
+        display: none;
+        /* Hide hamburger icon on larger screens */
     }
+}
 
-    .hero-content h1 {
-        font-size: 52px;
+@media (min-width: 1024px) {
+    .course-card {
+        margin: 0;
     }
-
-    .hero-image {
-        width: 45%;
-    }
-
-    /* Swap images for desktop specific assets */
-    .img-desktop { display: block; }
-    .img-mobile { display: none; }
-
-    .cta-group {
-        flex-direction: row; /* Horizontal buttons on desktop */
-    }
-} 
+}

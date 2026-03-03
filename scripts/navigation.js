@@ -1,5 +1,3 @@
-// responsive menu toggle and wayfinding
-
 const hamburger = document.getElementById("hamburger");
 const nav = document.querySelector("nav");
 
@@ -8,15 +6,15 @@ hamburger.setAttribute("aria-expanded", "false");
 
 hamburger.addEventListener("click", () => {
     const expanded = hamburger.getAttribute("aria-expanded") === "true";
-    hamburger.setAttribute("aria-expanded", String(!expanded));
+    const newState = !expanded;
+    hamburger.setAttribute("aria-expanded", String(newState));
     nav.classList.toggle("open");
+    hamburger.textContent = newState ? "✖" : "☰";
 });
 
-// mark current page link for accessibility
 function updateCurrentLink() {
     const links = nav.querySelectorAll("a");
     links.forEach(link => {
-        // compare pathnames to ignore domain
         if (link.pathname === window.location.pathname) {
             link.setAttribute("aria-current", "page");
         }
@@ -24,3 +22,6 @@ function updateCurrentLink() {
 }
 
 document.addEventListener("DOMContentLoaded", updateCurrentLink);
+
+document.getElementById("currentyear").textContent = new Date().getFullYear();
+document.getElementById("lastModified").textContent = document.lastModified;
