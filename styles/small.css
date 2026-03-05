@@ -1,51 +1,9 @@
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f9fafb;
+    margin: 0;
+    padding: 0;
 }
-
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-}
-
-/* ensure the navigation appears as a drop-down under header and spans full width */
-nav { 
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    z-index: 10;
-}
-
-nav.open {
-    display: flex;
-}
-
-/* when nav is open, keep header text color dark so X is visible */
-#hamburger {
-    color: #000;
-}
-
-
-header .site-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-}
-
-header .logo img {
-    height: 40px;
-}
-
-#hamburger,
-.hamburger {
-    display: block;
-    cursor: pointer;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-}
-
 
 main {
     padding: 1rem;
@@ -55,14 +13,6 @@ main {
 
 section {
     margin-bottom: 2rem;
-}
-
-.course-card {
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .section-header {
@@ -78,6 +28,72 @@ section {
     padding: 1rem;
 }
 
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    position: relative;
+}
+
+#hamburger {
+    display: block;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #000;
+}
+
+nav {
+    display: none; 
+    flex-direction: column;
+    width: 100%;
+    z-index: 10;
+}
+
+nav.open {
+    display: flex;
+    margin-top: 15px;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav ul li {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #333;
+    background-color: #333;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    cursor:pointer;
+    transition:.3s;
+}
+
+nav ul li{
+    transition: all .3s ease;
+}
+
+nav ul li:hover{
+    transform: translateX(6px);
+    background-color:#4fa08c;
+}
+header .site-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+header .logo img {
+    height: 40px;
+}
+
 .photo-box {
     width: 80%;
     max-width: 300px;
@@ -89,6 +105,7 @@ section {
     height: auto;
     border-radius: 8px;
     display: block;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .course-filters {
@@ -107,30 +124,38 @@ section {
     color: #fff;
     flex: 1;
     text-align: center;
+    background-color: #333;
 }
 
-.course-filters button#all-courses,
-.course-card.bg-all {
-    background: #ddd;
-    color: #000;
+.course-filters button:focus,
+.course-filters button:active {
+    outline: none;
+    background-color: #555;
 }
 
-.course-filters button#cse-courses,
-.course-card.bg-cse {
-    background: #ddd;
-    color: #000;
+.course-filters button.active {
+    background-color: #000;
+    color: #fff;
 }
 
-.course-filters button#wdd-courses,
-.course-card.bg-wdd {
-    background: #ddd;
-    color: black;
-}
-
-/* course container cards styling */
 #course-container {
     display: grid;
     gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.course-card {
+    margin-bottom: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    text-align: center;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.course-card .course-number {
+    font-size: 0.8em;
+    font-weight: normal;
 }
 
 #total-credits {
@@ -139,59 +164,49 @@ section {
     font-weight: bold;
 }
 
-
-/* smaller font for the numeric portion of course IDs */
-.course-number {
-    font-size: 0.8em;
-    font-weight: normal;
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
 }
 
-.course-filters button:focus,
-.course-filters button:active {
-    background: #f0f0f0;
-    outline: none;
+.social-links a i {
+    font-size: 1.5rem;
+    color: #000;
+    transition: transform 0.2s;
 }
 
-.course-card {
-    margin-bottom: 0.5rem;
-    padding: 0.75rem 1rem;
-    border-radius: 4px;
-    text-align: center;
+.social-links a:hover i {
+    transform: scale(1.2);
 }
 
-/* adjust nav styles that show/hide depending on state */
-
-nav ul li {
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid #333;
-    background-color: #333;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #fff;
-    display: block;
-}
-
-/* Light green background for completed courses */
-
-.not-completed {
-    background-color: #f8d7da;
-    /* Light red background for not completed courses */
-}
-
-/* highlight filters */
-.highlight-wdd {
-    background-color: #a0c4ff;
-    /* light blue for WDD */
-}
-
-.highlight-cse {
-    background-color: #caffbf;
-    /* light green for CSE */
-}
 footer {
     padding: 1rem;
     text-align: center;
     background: #ccc;
+}
+
+@media (min-width: 769px) {
+    nav {
+        display: flex !important; 
+        flex-direction: row;
+        gap: 1rem;
+        background: none;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    nav ul li {
+        border: none;
+        background: none;
+    }
+
+    #hamburger {
+        display: none; 
+    }
 }
