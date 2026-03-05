@@ -74,16 +74,13 @@ nav ul li a {
     color: #fff;
     display: block;
     cursor:pointer;
-    transition:.3s;
-}
-
-nav ul li{
     transition: all .3s ease;
 }
 
 nav ul li:hover{
     transform: translateX(6px);
     background-color:#4fa08c;
+    box-shadow: 8px;
 }
 header .site-title {
     font-size: 1.25rem;
