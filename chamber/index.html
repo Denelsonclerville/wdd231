@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <title>Ayiti Chamber of Commerce</title>
+        <meta name="description" content="Business community of Haiti">
+        <meta name="author" content="Denelson Clerville">
+        <link rel="stylesheet" href="styles/normalize.css">
+        <link rel="stylesheet" href="styles/chamber_large.css">
+        <link rel="stylesheet" href="styles/chamber_small.css">
+        <script src="scripts/chamber_navigation.js" defer></script>
+        <script src="scripts/directory.js" defer></script>
+
+    </head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Ayiti Chamber of Commerce Logo">
+            <h2>COC Haiti</h2>
+        </div>
+
+        <nav aria-label="Main navigation">
+           <button id="menu" aria-label="Toggle navigation menu">☰</button>
+        
+            <ul class="navigation">
+                <li><a href="#">Home</a></li>
+                <li><a href="./directory.html">Directory</a></li>
+                <li><a href="#">Join</a></li>
+                <li><a href="#">Discover</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <button class="cta">Keynote Tickets</button>
+    </div>
+
+    <main>
+       <h1>Home</h1>
+       <section class="home-container">
+            <div class="events">
+               <h2>Events</h2>
+
+            </div>
+
+            <div class="weather">
+              <h2>Current Weather</h2>
+                <p id="temp"></p>
+                <p id="condition"></p>
+                <p id="humidity"></p>
+                <p id="wind"></p>
+            </div>
+
+            <div class="forecast">
+              <h2>Weather Forecast</h2>
+                <p id="day1"></p>
+                <p id="day2"></p>
+                <p id="day3"></p>
+           </div>
+
+        </section>
+       <section id="business-container" class="business-grid"></section>
+    </main>
+    <footer>
+        <div class="footer-contact">
+            <p><strong>Ayiti Chamber of Commerce</strong></p>
+            <p>Port-au-Prince Haiti</p>
+            <p>info@chamber.ht</p>
+            <p>(509) 2222-2300</p>
+        </div>
+
+
+        <div class="social-links">
+            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                <i class="fa-brands fa-github"></i></a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer"
+                aria-label="LinkedIn Profile">
+                <i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer"
+                aria-label="Twitter Profile">
+                <i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+
+        <div class="footer-dev">
+
+            <p>WDD231 Project</p>
+            <p>Denelson Clerville</p>
+            <p>© <span id="year"></span></p>
+            <p>Last Modified: <span id="lastModified"></span></p>
+        </div>
+
+    </footer>
+</body>
+</html>

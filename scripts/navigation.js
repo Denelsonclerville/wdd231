@@ -1,39 +1,42 @@
-const hamburger = document.getElementById("hamburger");
-const nav = document.querySelector("header nav");
-hamburger.setAttribute("aria-expanded", "false");
+// Navigation toggle for mobile menu
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.getElementById('menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
 
-hamburger.addEventListener("click", () => {
-    const isOpen = nav.classList.toggle("open");
-    hamburger.setAttribute("aria-expanded", isOpen);
-    hamburger.textContent = isOpen ? "✖" : "☰";
-});
-
-nav.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-        nav.classList.remove("open");
-        hamburger.setAttribute("aria-expanded", "false");
-        hamburger.textContent = "☰";});
-});
-
-function updateCurrentLink() {
-    const links = nav.querySelectorAll("a");
-    links.forEach(link => {
-        if (link.pathname === window.location.pathname) {
-            link.setAttribute("aria-current", "page");
-            link.classList.add("current");
-        }
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', function() {
+      navMenu.classList.toggle('active');
     });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!menuToggle.contains(event.target) && !navMenu.contains(event.target)) {
+        navMenu.classList.remove('active');
+      }
+    });
+
+    // Close menu when clicking on a link
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', function() {
+        navMenu.classList.remove('active');
+      });
+    });
+  }
+});
+
+// Set current year
+const yearElement = document.getElementById('year');
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
 }
-document.addEventListener("DOMContentLoaded", updateCurrentLink);
 
-const currentYear = document.getElementById("currentyear");
-if (currentYear) currentYear.textContent = new Date().getFullYear();
-
-const lastModified = document.getElementById("lastModified");
-if (lastModified) {
-    const modDate = new Date(document.lastModified);
-    lastModified.textContent = modDate.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'});
+// Set last modified date
+const lastModifiedElement = document.getElementById('last-modified');
+if (lastModifiedElement) {
+  const lastModified = new Date(document.lastModified);
+  lastModifiedElement.textContent = lastModified.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
 }
