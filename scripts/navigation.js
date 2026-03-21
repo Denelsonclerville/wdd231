@@ -1,42 +1,52 @@
-// Navigation toggle for mobile menu
-document.addEventListener('DOMContentLoaded', function() {
-  const menuToggle = document.getElementById('menu-toggle');
-  const navMenu = document.getElementById('nav-menu');
+document.addEventListener("DOMContentLoaded", () => {
 
-  if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', function() {
-      navMenu.classList.toggle('active');
-    });
+  const hamburger = document.getElementById("hamburger");
+  const nav = document.querySelector("nav");
+  hamburger.addEventListener("click", (e) => {
+    e.stopPropagation();
 
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-      if (!menuToggle.contains(event.target) && !navMenu.contains(event.target)) {
-        navMenu.classList.remove('active');
-      }
-    });
-
-    // Close menu when clicking on a link
-    navMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', function() {
-        navMenu.classList.remove('active');
-      });
-    });
-  }
-});
-
-// Set current year
-const yearElement = document.getElementById('year');
-if (yearElement) {
-  yearElement.textContent = new Date().getFullYear();
-}
-
-// Set last modified date
-const lastModifiedElement = document.getElementById('last-modified');
-if (lastModifiedElement) {
-  const lastModified = new Date(document.lastModified);
-  lastModifiedElement.textContent = lastModified.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
+    nav.classList.toggle("open");
+    if (nav.classList.contains("open")) {
+      hamburger.textContent = "✖"; 
+      hamburger.setAttribute("aria-expanded", "true");
+    } else {
+      hamburger.textContent = "☰";
+      hamburger.setAttribute("aria-expanded", "false");
+    }
   });
-}
+
+  document.addEventListener("click", (e) => {
+    if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+      nav.classList.remove("open");
+      hamburger.textContent = "☰";
+      hamburger.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  document.querySelectorAll("nav a").forEach(link => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
+      hamburger.textContent = "☰";
+      hamburger.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  const currentPage = window.location.pathname.split("/").pop();
+
+  document.querySelectorAll("nav a").forEach(link => {
+    const href = link.getAttribute("href");
+
+    if (href === currentPage || (href === "index.html" && currentPage === "")) {
+      link.setAttribute("aria-current", "page");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+
+  const year = document.getElementById("currentyear");
+  if (year) year.textContent = new Date().getFullYear();
+
+  const lastMod = document.getElementById("lastModified");
+  if (lastMod) lastMod.textContent = document.lastModified;
+
+});

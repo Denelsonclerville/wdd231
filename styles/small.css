@@ -6,7 +6,8 @@ body {
 }
 
 main {
-    padding: 1rem;
+    height: auto;
+    padding: 9rem 1rem 1rem;
     max-width: 1024px;
     margin: 0 auto;
 }
@@ -27,60 +28,105 @@ section {
 .section-content {
     padding: 1rem;
 }
-
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 0.3rem 1rem;
+    background: #e6e6e6;
     position: relative;
 }
 
 #hamburger {
-    display: block;
-    cursor: pointer;
+    position: relative;
+    top: -3px;
+    font-size: 1.8rem;
     background: none;
     border: none;
-    font-size: 1.5rem;
-    color: #000;
+    cursor: pointer;
+    z-index: 1001;
 }
 
+#hamburger:hover{
+    background: #d3cfcf;
+    box-shadow: 10px;
+}
 nav {
-    display: none; 
-    flex-direction: column;
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
     width: 100%;
-    z-index: 10;
+    background: #746e6e;
+    display: none;
+    flex-direction: column;
 }
 
 nav.open {
     display: flex;
-    margin-top: 15px;
 }
 
 nav ul {
+    list-style: none;
     margin: 0;
     padding: 0;
-    list-style: none;
 }
 
 nav ul li {
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid #333;
-    background-color: #333;
+    border-bottom: 1px solid #444;
 }
 
 nav ul li a {
-    text-decoration: none;
-    color: #fff;
     display: block;
-    cursor:pointer;
-    transition: all .3s ease;
+    padding: 1rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    position: relative;
+    transition: all 0.3s ease;
 }
 
-nav ul li:hover{
-    transform: translateX(6px);
-    background-color:#4fa08c;
-    box-shadow: 8px;
+nav ul li a:hover {
+    background: linear-gradient(135deg, #4fa08c, #2c3e50);
+    padding-left: 1.5rem;
+    color: #fff;
+    transform: translateX(5px);
+}
+
+nav ul li a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(255,255,255,0.2);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::before {
+    width: 100%;
+}
+nav a[aria-current="page"] {
+    background-color: #000;      
+    color: #fff;                 
+    border-left: 6px solid #4fa08c; 
+    font-weight: bold;
+}
+
+nav.open {
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 header .site-title {
     font-size: 1.25rem;
