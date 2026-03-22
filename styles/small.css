@@ -229,27 +229,3 @@ footer {
     text-align: center;
     background: #ccc;
 }
-
-@media (min-width: 769px) {
-    nav {
-        display: flex !important; 
-        flex-direction: row;
-        gap: 1rem;
-        background: none;
-    }
-
-    nav ul {
-        display: flex;
-        flex-direction: row;
-        gap: 1rem;
-    }
-
-    nav ul li {
-        border: none;
-        background: none;
-    }
-
-    #hamburger {
-        display: none; 
-    }
-}
