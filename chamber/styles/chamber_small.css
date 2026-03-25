@@ -81,7 +81,9 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../images/slide1.png") center/cover no-repeat;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url("../images/slide1.png") center/cover no-repeat;
 }
 
 .cta {
@@ -108,7 +110,8 @@ header {
     text-align: center;
 }
 
-.card h2, .card h3 {
+.card h2,
+.card h3 {
     background: #333;
     color: white;
     margin: 0;
@@ -116,7 +119,8 @@ header {
     font-size: 1.2rem;
 }
 
-.card p, .card div {
+.card p,
+.card div {
     padding: 1rem;
 }
 
@@ -213,7 +217,8 @@ footer {
     background-color: #ffffff;
 }
 
-.list .card-logo, .list .membership {
+.list .card-logo,
+.list .membership {
     display: none !important;
 }
 
