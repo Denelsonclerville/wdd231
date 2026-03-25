@@ -1,190 +1,333 @@
 @media (min-width: 769px) {
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 5%;
-        border-bottom: 2px solid #333;
-    }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    border-bottom: 2px solid #333;
+  }
 
-    nav i{
-        position: absolute;
-        top: 41px;
-        right: 42px;
-    }
-    .logo { 
-        display: flex; 
-        align-items: center; 
-        gap: 10px;
-    }
+  nav i {
+    position: absolute;
+    top: 41px;
+    right: 42px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-    .logo img { width: 50px; }
-    
-    #menu { display: none; }
+  .logo img {
+    width: 50px;
+  }
 
-    .navigation {
-        display: flex !important;
-        list-style: none;
-        gap: 20px;
-    } 
+  #menu {
+    display: none;
+  }
 
-    /* --- Tit Home --- */
-    main > div h2 {
-        padding: 20px 5% 10px 5%;
-        margin: 0;
-        font-size: 2.2rem;
-        color: #333;
-    }
-     nav ul li:hover {
-        color: #000;
-        transform: translateY(-3px);
-     }
+  .navigation {
+    display: flex !important;
+    list-style: none;
+    gap: 20px;
+  }
 
-     .hero {
-        position: relative;
-        width: 100%;
-        min-height: 400px; 
-        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../images/slide1.png") center/cover no-repeat;
-        display: flex;
-        align-items: center;
-        justify-content: center; 
-        padding: 2rem 10%;
-    }
+  main > div h2 {
+    padding: 20px 5% 10px 5%;
+    margin: 0;
+    font-size: 2.2rem;
+    color: #333;
+  }
+  nav ul li:hover {
+    color: #000;
+    transform: translateY(-3px);
+  }
 
-    .cta {
-        background: #ffd700;
-        color: #000;
-        padding: 1rem 2rem;
-        border: none;
-        font-weight: bold;
-        cursor: pointer;
-        border-radius: 8px;
-        font-size: 1.2rem;
-        transition: 0.3s ease;
-    }
+  .hero {
+    position: relative;
+    max-width: 1200px;
+    min-height: 400px;
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+      url("../images/slide1.png") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 10%;
+  }
 
-    .cta:hover {
-        background: #e6c200;
-        transform: scale(1.05);
-    }
+  .cta {
+    background: #ffd700;
+    color: #000;
+    padding: 1rem 2rem;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    transition: 0.3s ease;
+  }
 
-    .home-container {
-        display: grid;
-        grid-template-columns: 2.5fr 1.2fr 1fr;
-        gap: 20px;
-    }
+  .cta:hover {
+    background: #e6c200;
+    transform: scale(1.05);
+  }
 
-    .home-container .card {
-        background: #fff;
-        border: 2px solid #b1afaf;
-        border-radius: 6px; 
-        overflow: hidden;
-    }
+  .home-container {
+    display: grid;
+    grid-template-columns: 2.5fr 1.2fr 1fr;
+    gap: 20px;
+  }
 
-    .home-container .card.weather, 
-    .home-container .card.forecast {
-        background-color: #dbdbdb !important;
-    }
+  .home-container .card {
+    background: #fff;
+    border: 2px solid #b1afaf;
+    border-radius: 6px;
+    overflow: hidden;
+  }
 
-    .home-container .card h2 {
-        background: #333;
-        color: #fff;
-        margin: 0;
-        padding: 0.8rem 1rem;
-        text-align: left; 
-    }
+  .home-container .card.weather,
+  .home-container .card.forecast {
+    background-color: #dbdbdb !important;
+  }
 
-    .weather-top {
-        display: flex;
-        align-items: center;
-        gap: 1px;
-        padding: 1px 2px;
-    }
+  .home-container .card h2 {
+    background: #333;
+    color: #fff;
+    margin: 0;
+    padding: 0.8rem 1rem;
+    text-align: left;
+  }
 
-    #weather-icon {
-        width: 100px;
-        height: auto;
-    }
+  .weather-top {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    padding: 1px 2px;
+  }
 
-    #temp {
-        margin-left: 20px;
-        font-size: 1.5rem;
-        font-weight: bold;
-    }
+  #weather-icon {
+    width: 100px;
+    height: auto;
+  }
 
-    .weather-details  {
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        justify-content: center;
-        font-size: 0.95rem;
-    }
+  #temp {
+    margin-left: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
 
-    .weather-details p{
-        margin: 0 2px;
-        font-size: 1.5rem;
-        font-weight: bold;
-    }
+  .weather-details {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+    font-size: 0.95rem;
+  }
 
-    .business-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        padding: 2rem 5%;
-    }
+  .weather-details p {
+    margin: 0 2px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
 
-    .business-grid .card {
-        background: #f9f9f9;
-        border: 1px solid #c0bbbb;
-        border-radius: 8px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-    }
+  .business-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 2rem 5%;
+  }
 
-    footer {
-        display: grid;
-        grid-template-columns: 2fr 1.5fr 1fr;
-        background: #dbdbdb; 
-        color: #333;
-        padding: 2.5rem ;
-        align-items: center;
-        border-top: 6px solid #add8e6; 
-    }
+  .business-grid .card {
+    background: #f9f9f9;
+    border: 1px solid #c0bbbb;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
 
-    .footer-contact {
-        text-align: left;
-        line-height: 1.5;
-    }
+  footer {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1fr;
+    background: #dbdbdb;
+    color: #333;
+    padding: 2.5rem;
+    align-items: center;
+    border-top: 6px solid #add8e6;
+  }
 
-    .footer-contact p {
-        margin: 5px 0;
-    }
+  .footer-contact {
+    text-align: left;
+    line-height: 1.5;
+  }
 
-    .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-    }
+  .footer-contact p {
+    margin: 5px 0;
+  }
 
-    .social-links a i {
-        font-size: 2.5rem;
-        color: #000; 
-        border-radius: 8px;
-        transition: 0.3s ease;
-    }
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
 
-    .social-links a i:hover {
-        color: #81b5e0;
-        transform: translateY(-3px);
-    }
+  .social-links a i {
+    font-size: 2.5rem;
+    color: #000;
+    border-radius: 8px;
+    transition: 0.3s ease;
+  }
 
-    .footer-dev {
-        text-align: left;
-        line-height: 1.5;
-    }
+  .social-links a i:hover {
+    color: #81b5e0;
+    transform: translateY(-3px);
+  }
 
-    .footer-dev p {
-        margin: 5px 0;
-    }
+  .footer-dev {
+    text-align: left;
+    line-height: 1.5;
+  }
+
+  .footer-dev p {
+    margin: 5px 0;
+  }
+
+  .directory-header {
+    background-color: #d2dde7;
+    padding: 1.5rem 2rem;
+    border-bottom: 3px solid #004c6d;
+  }
+
+  .directory-header h1 {
+    font-family: "Montserrat", sans-serif;
+    color: #333;
+    margin: 0;
+    align-items: left;
+  }
+
+  .view-toggle {
+    display: flex;
+    gap: 10px;
+  }
+
+  .view-toggle button {
+    background-color: #ddd;
+    border: 2px solid black;
+    padding: 10px 18px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    color: #00695c;
+    transition: all 0.3s ease;
+  }
+
+  .view-toggle button.active {
+    background-color: #00695c;
+    color: #ffffff;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .view-toggle button:hover:not(.active) {
+    background-color: #ddd;
+  }
+
+  #business-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 15px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .grid .business-card {
+    background: #ddd;
+    border: 2px solid #eaeaea;
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+  }
+
+  .grid .business-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .grid .card-logo img {
+    width: 100%;
+    max-width: 150px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 20px;
+  }
+ .grid h3 {
+    display: none;
+  }
+ 
+
+  .grid p {
+    margin: 3px 0;
+    font-size: 0.95rem;
+    color: #333;
+  }
+
+  .grid .address {
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+
+  .grid .url a {
+    color: #308df1;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .list .business-card {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1.5fr 1.5fr;
+    align-items: center;
+    padding: 15px 20px;
+    text-align: left;
+  }
+
+  .list .card-logo {
+    display: none;
+  }
+
+  .list .business-card:nth-child(even) {
+    background-color: #ddd;
+  }
+
+  .list .business-card:nth-child(odd) {
+    background-color: #ffffff;
+  }
+
+  .list h3 {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .list p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .list .membership {
+    display: none;
+  }
 }

@@ -1,6 +1,5 @@
-
 body {
-    font-family: 'Roboto', Arial, sans-serif;
+    font-family: "Roboto", Arial, sans-serif;
     margin: 0;
     line-height: 1.6;
     color: #333;
@@ -20,8 +19,6 @@ header {
 }
 
 .logo {
-    position: relative;
-    top: 0;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -42,7 +39,6 @@ header {
     font-size: 1.8rem;
     background: none;
     border: none;
-    border-radius: 8px;
     cursor: pointer;
     color: #333;
 }
@@ -63,7 +59,7 @@ header {
     width: 100%;
     background: #2a6f97;
     padding: 1rem 0;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navigation li {
@@ -76,14 +72,8 @@ header {
     font-weight: bold;
     padding: 1rem;
     display: block;
-    transition: 0.3s;
 }
 
-.navigation a:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-/* --- Hero Section --- */
 .hero {
     position: relative;
     width: 100%;
@@ -91,7 +81,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("../images/slide1.png") center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../images/slide1.png") center/cover no-repeat;
 }
 
 .cta {
@@ -101,14 +91,11 @@ header {
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
-    font-size: 1rem;
-    border: none;
 }
 
-/* --- Home Layout (Events, Weather, Forecast) --- */
 .home-container {
     display: flex;
-    flex-direction: column; /* Youn anba lòt */
+    flex-direction: column;
     gap: 20px;
     padding: 1.5rem;
 }
@@ -118,10 +105,9 @@ header {
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
-    text-align: center; /* Santre tèks la */
+    text-align: center;
 }
 
-/* Tit fonse jan w te mande l la */
 .card h2, .card h3 {
     background: #333;
     color: white;
@@ -134,56 +120,24 @@ header {
     padding: 1rem;
 }
 
-/* --- Business Grid / Spotlight (Mobile) --- */
 .business-grid {
     display: flex;
-    flex-direction: column; /* Stacked */
+    flex-direction: column;
     gap: 20px;
     padding: 0 1.5rem 1.5rem 1.5rem;
 }
 
-.business-grid .card {
-    background: #f9f9f9;
-}
-
-/* Kenbe imaj a gòch menm sou mobile si gen espas */
-.card-content {
-    display: flex;
-    flex-direction: row; 
-    padding: 15px;
-    align-items: center;
-    gap: 15px;
-}
-
-.card-content img {
-    width: 70px;
-    height: auto;
-    flex-shrink: 0;
-}
-
-.card-details {
-    text-align: left; /* Tèks detay yo rete a dwat imaj la */
-    font-size: 0.85rem;
-}
-
-.card-details p {
-    padding: 2px 0;
-    margin: 0;
-}
-
-/* --- Footer --- */
 footer {
     background: #222;
     color: white;
     padding: 2rem 1rem;
     display: flex;
-    flex-direction: column; /* Stacked footer */
+    flex-direction: column;
     gap: 1.5rem;
     text-align: center;
 }
 
 .social-links {
-    font-size: 1.5rem;
     display: flex;
     justify-content: center;
     gap: 1.5rem;
@@ -191,4 +145,101 @@ footer {
 
 .social-links a {
     color: white;
+    font-size: 1.5rem;
+}
+
+.view-toggle button.active {
+    background-color: #00695c;
+    color: #ffffff;
+}
+
+#business-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 10px;
+}
+
+.grid .business-card {
+    background-color: #ddd;
+    width: 95%;
+    max-width: 350px;
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 3px solid #777;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid .business-card img {
+    max-width: 130px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.grid h3 {
+    display: none;
+}
+
+.grid p {
+    margin: 4px 0;
+    font-size: 0.9rem;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    margin: 10px 5px;
+}
+
+.list .business-card {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr 0.8fr;
+    align-items: center;
+    padding: 10px 5px;
+    gap: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.list .business-card:nth-child(even) {
+    background-color: #ddd;
+}
+
+.list .business-card:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.list .card-logo, .list .membership {
+    display: none !important;
+}
+
+.list h3 {
+    display: block;
+    background: none;
+    color: #000;
+    padding: 0;
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.list p {
+    padding: 0;
+    margin: 0;
+    font-size: 0.7rem;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.list .url a {
+    font-size: 0.65rem;
+    color: #0000ee;
+    text-align: right;
+    display: block;
 }
