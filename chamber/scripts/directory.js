@@ -1,101 +1,96 @@
-const url = "data/members.json";
+const membersUrl = "data/members.json";
 
-// 1. SELEKSYON ELEMAN YO
-const directoryContainer = document.querySelector("#business-container"); // Pou Directory.html
-const spotlightContainer = document.querySelector(".spotlight-container"); // Pou Index.html
-const gridBtn = document.querySelector("#gridViewBtn");
-const listBtn = document.querySelector("#listViewBtn");
-
-// 2. FONKSYON PRINCIPAL POU FETCH DONE YO
-async function getMembers() {
+async function getMembersData() {
     try {
-        const response = await fetch(url);
-        if (response.ok) {
-            const data = await response.json();
+        const response = await fetch(membersUrl);
+        const members = await response.json();
 
-            // SI NOU SOU PAJ DIRECTORY: Afiche tout manm yo
-            if (directoryContainer) {
-                displayBusinesses(data);
-            }
+        // A. SI NOU SOU PAJ DIRECTORY
+        const directoryContainer = document.querySelector("#business-container");
+        if (directoryContainer) {
+            displayDirectory(members, directoryContainer);
+        }
 
-            // SI NOU SOU PAJ INDEX: Afiche Spotlight (Gold/Silver)
-            if (spotlightContainer) {
-                displaySpotlights(data);
-            }
-        } else {
-            console.error("Erè: Fichye JSON lan pa ka chaje.");
+        // B. SI NOU SOU PAJ HOME (SPOTLIGHT)
+        const spotlightContainer = document.querySelector(".spotlight-container");
+        if (spotlightContainer) {
+            displaySpotlights(members, spotlightContainer);
         }
     } catch (error) {
-        console.error("Pwoblèm koneksyon:", error);
+        console.error("Members Error:", error);
     }
 }
 
-// 3. FONKSYON POU PAJ DIRECTORY (Tout Manm)
-function displayBusinesses(members) {
-    directoryContainer.innerHTML = "";
-    members.forEach((member) => {
+function displayDirectory(members, container) {
+    container.innerHTML = "";
+    members.forEach((m) => {
         const card = document.createElement("section");
-        card.classList.add("business-card");
+        card.className = "business-card";
         card.innerHTML = `
             <div class="card-logo">
-                <img src="images/${member.image}" alt="Logo of ${member.name}" loading="lazy" width="150" height="100">
+                <img src="images/${m.image}" alt="${m.name}" loading="lazy">
             </div>
-            <h3>${member.name}</h3>
-            <p class="address">${member.address}</p>
-            <p class="phone">${member.phone}</p>
-            <p class="url"><a href="https://${member.website}" target="_blank" rel="noopener">${member.website}</a></p>
+            <h3>${m.name}</h3>
+            <p class="address">${m.address}</p>
+            <p class="phone">${m.phone}</p>
+            <p class="url">
+                <a href="https://${m.website}" target="_blank">${m.website}</a>
+            </p>
         `;
-        directoryContainer.appendChild(card);
+        container.appendChild(card);
     });
 }
 
-// 4. FONKSYON POU PAJ INDEX (Spotlight - Nivo 2 & 3)
-function displaySpotlights(members) {
-    spotlightContainer.innerHTML = "";
+/** * Fonksyon sa modifye pou koresponn ak Wireframe lan:
+ * Tit -> HR -> (Imaj a gòch | Kontak a dwat)
+ */
+function displaySpotlights(members, container) {
+    // Filtre pou Gold (3) ak Silver (2) sèlman
+    const eligible = members.filter((m) => m.membership === 2 || m.membership === 3);
+    const shuffled = eligible.sort(() => 0.5 - Math.random()).slice(0, 3);
 
-    // Filtre manm ki nivo 2 (Silver) oswa 3 (Gold) sèlman
-    const eligibleMembers = members.filter((m) => m.membership === 2 || m.membership === 3);
+    container.innerHTML = "";
 
-    // Melanje yo owaza (Shuffle)
-    const shuffled = eligibleMembers.sort(() => 0.5 - Math.random());
-
-    // Chwazi 3 manm (Ribrik la mande 2-3)
-    const selectedMembers = shuffled.slice(0, 3);
-
-    selectedMembers.forEach((member) => {
+    shuffled.forEach((m) => {
+        // Kreye yon eleman div pou chak kat
         const spotCard = document.createElement("div");
-        spotCard.classList.add("card", "spotlight-card");
+        spotCard.className = "spotlight-card";
 
-        const levelName = member.membership === 3 ? "Gold" : "Silver";
-
+        // Estrikti HTML la dapre imaj wireframe lan
         spotCard.innerHTML = `
-            <h3>${member.name}</h3>
-            <img src="images/${member.image}" alt="${member.name}" width="100" loading="lazy">
-            <p>${member.phone}</p>
-            <p><a href="https://${member.website}" target="_blank">${member.website}</a></p>
-            <p><strong>Membership: ${levelName}</strong></p>
-            <p><em>${member.otherInfo}</em></p>
+            <h3>${m.name}</h3>
+            <p class="tagline"><em>${m.otherInfo || "Business Tag Line"}</em></p>
+            <hr>
+            <div class="spot-info-wrapper">
+                <img src="images/${m.image}" alt="${m.name}" loading="lazy">
+                <div class="spot-details">
+                    <p>EMAIL: <strong>${m.name.toLowerCase().replace(/\s/g, "")}@gmail.com</strong></p>
+                    <p>PHONE: <strong>${m.phone}</strong></p>
+                    <p>URL: <a href="https://${m.website}" target="_blank"><strong>${m.website}</strong></a></p>
+                </div>
+            </div>
         `;
-        spotlightContainer.appendChild(spotCard);
+        container.appendChild(spotCard);
     });
 }
 
-// 5. BOUTON GRID/LIST (Sèlman si nou sou paj Directory)
-if (gridBtn && listBtn) {
+// Bouton Grid/List pou paj Directory
+const gridBtn = document.querySelector("#gridViewBtn");
+const listBtn = document.querySelector("#listViewBtn");
+const businessContainer = document.querySelector("#business-container");
+
+if (gridBtn && listBtn && businessContainer) {
     gridBtn.addEventListener("click", () => {
-        directoryContainer.classList.add("grid");
-        directoryContainer.classList.remove("list");
+        businessContainer.className = "grid";
         gridBtn.classList.add("active");
         listBtn.classList.remove("active");
     });
 
     listBtn.addEventListener("click", () => {
-        directoryContainer.classList.add("list");
-        directoryContainer.classList.remove("grid");
+        businessContainer.className = "list";
         listBtn.classList.add("active");
         gridBtn.classList.remove("active");
     });
 }
 
-// 6. LANSE FETCH LA
-getMembers();
+getMembersData();
