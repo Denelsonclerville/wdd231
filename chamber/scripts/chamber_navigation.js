@@ -3,7 +3,9 @@ const navList = document.querySelector(".navigation");
 
 if (menuBtn && navList) {
     menuBtn.addEventListener("click", () => {
-        navList.classList.toggle("open");
+        navList.classList.toggle("show");
+        
+        menuBtn.classList.toggle("show");
     });
 }
 
