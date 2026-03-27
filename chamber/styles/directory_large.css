@@ -1,14 +1,3 @@
-/* 1. Reset ak Variyab */
-:root {
-    --primary-teal: #00695c;
-    --hover-teal: #004d40;
-    --bg-light: #f4f4f4;
-    --white: #ffffff;
-    --text-dark: #333;
-    --border-color: #ddd;
-    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -17,49 +6,54 @@
 
 body {
     font-family: "Roboto", sans-serif;
-    background-color: var(--bg-light);
-    color: var(--text-dark);
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* 2. Header: H1 a gòch, Bouton a dwat */
+main {
+    flex: 1;
+}
+
 .directory-header {
     display: flex;
-    justify-content: space-between; /* Sa a pouse H1 a gòch, div bouton an a dwat */
+    justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
-    background-color: var(--white);
+    background-color: #ffffff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #00695c;
 }
 
 .directory-header h1 {
     font-family: "Montserrat", sans-serif;
     font-size: 1.8rem;
-    color: var(--primary-teal);
+    color: #00695c;
 }
 
-/* Bouton View Toggle */
 .view-toggle button {
     padding: 10px 20px;
     font-size: 1.2rem;
     cursor: pointer;
     background-color: #eee;
-    border: 1px solid var(--border-color);
+    border: 1px solid #ddd;
     border-radius: 4px;
     transition: all 0.3s ease;
     margin-left: 5px;
 }
 
 .view-toggle button:hover {
-    background-color: #e0f2f1; /* Ti vè klè pou user a pa pèdi */
-    border-color: var(--primary-teal);
+    background-color: #e0f2f1;
+    border-color: #00695c;
 }
 
 .view-toggle button.active {
-    background-color: var(--primary-teal);
-    color: var(--white);
+    background-color: #00695c;
+    color: #ffffff;
 }
 
-/* 3. Grid View (3x3 Desktop, 2x2 Tablet) */
 #business-container.grid {
     display: grid;
     gap: 25px;
@@ -68,35 +62,31 @@ body {
     margin: 0 auto;
 }
 
-/* Desktop: 3 Kolòn */
 @media (min-width: 1000px) {
     #business-container.grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* Tablet: 2 Kolòn */
 @media (min-width: 600px) and (max-width: 999px) {
     #business-container.grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Mobile: 1 Kolòn */
 @media (max-width: 599px) {
     #business-container.grid {
         grid-template-columns: 1fr;
     }
 }
 
-/* Style Kat Grid la */
 .grid .business-card {
-    background-color: var(--white);
+    background-color: #ddd;
     padding: 25px;
     text-align: center;
     border-radius: 8px;
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow);
+    border: 1px solid #e0f2f1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,12 +97,12 @@ body {
     max-width: 150px;
     height: 100px;
     object-fit: contain;
-    margin-bottom: 15px; /* Imaj anlè */
+    margin-bottom: 15px;
 }
 
 .grid .business-card h3 {
-    margin-bottom: 10px; /* Non anba imaj */
-    color: var(--primary-teal);
+    margin-bottom: 10px;
+    color: #00695c;
 }
 
 .grid .business-card p {
@@ -120,67 +110,69 @@ body {
     margin: 3px 0;
 }
 
-/* 4. List View (Design ou mande a) */
 #business-container.list {
     display: flex;
     flex-direction: column;
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 0 5%;
+    max-width: 95%; 
+    margin: 30px auto;
 }
 
 .list .business-card {
     display: flex;
-    justify-content: space-between; /* Non a gòch, rès la a dwat */
+    justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
-    background-color: var(--white);
-    border-bottom: 1px solid var(--border-color);
+    padding: 20px 30px;
+    border-left: 5px solid transparent;
+    transition: 0.2s;
+}
+
+.list .business-card:nth-child(odd) {
+    background-color: #ffffff;
 }
 
 .list .business-card:nth-child(even) {
-    background-color: #f9f9f9; /* Altène koulè yo */
+    background-color: #ddd;
 }
 
-/* Kache imaj nan List View */
+.list .business-card:hover {
+    background-color: #e0f2f1;
+}
+
 .list .card-logo {
     display: none;
 }
 
 .list .business-card h3 {
-    flex: 1; /* Pran espas a gòch */
-    font-size: 1rem;
+    flex: 2;
+    font-size: 1.1rem;
 }
 
 .list .business-card p,
 .list .business-card .url {
     flex: 1;
-    text-align: center;
-    font-size: 0.85rem;
+    text-align: left;
+    font-size: 0.95rem;
 }
 
 .list .business-card .url {
-    text-align: right; /* URL a dwat nèt */
+    text-align: left;
 }
 
 .list .business-card a {
-    color: var(--primary-teal);
-    text-decoration: none;
-    font-weight: bold;
+    color: #004d40;
 }
+
 footer {
-    background-color: #ddd; 
-    color: #333;
+    background-color: #263238;
+    color: #eceff1;
     text-align: center;
-    padding: 20px;
-    margin-top: 50px; 
-    border-top: 5px solid #b4adb4;
+    padding: 40px 20px;
+    margin-top: 50px;
+    border-top: 6px solid #00695c;
 }
 
 footer p {
-    font-size: 1rem;
-    letter-spacing: 1px;
-    font-weight: 400;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    line-height: 1.6;
 }
-
-
