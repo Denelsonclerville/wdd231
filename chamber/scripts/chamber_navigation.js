@@ -1,4 +1,3 @@
-// --- 1. NAVIGATION & FOOTER DATES ---
 const menuBtn = document.querySelector("#menu");
 const navList = document.querySelector(".navigation");
 
@@ -13,9 +12,8 @@ const lastModSpan = document.querySelector("#lastModified");
 if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 if (lastModSpan) lastModSpan.textContent = document.lastModified;
 
-// --- 2. OPENWEATHER API (Imperial for Fahrenheit) ---
-const apiKey = "f87506fef3f9d3690498f26dd78a2b09"; 
-const lat = "18.51"; 
+const apiKey = "f87506fef3f9d3690498f26dd78a2b09";
+const lat = "18.51";
 const lon = "-72.28";
 const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
 const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
@@ -24,13 +22,12 @@ async function getWeatherData() {
     try {
         const weatherContainer = document.querySelector(".weather-content");
         const response = await fetch(weatherUrl);
-        
+
         if (response.ok && weatherContainer) {
             const data = await response.json();
-            
-            // Fonksyon pou konvèti timestamp an Lè (Sunrise/Sunset)
+
             const formatTime = (timestamp) => {
-                return new Date(timestamp * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                return new Date(timestamp * 1000).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
             };
 
             weatherContainer.innerHTML = `
@@ -52,19 +49,20 @@ async function getWeatherData() {
         const fResponse = await fetch(forecastUrl);
         if (fResponse.ok) {
             const fData = await fResponse.json();
-            const daily = fData.list.filter(item => item.dt_txt.includes("12:00:00")).slice(0, 3);
-            
+            const daily = fData.list.filter((item) => item.dt_txt.includes("12:00:00")).slice(0, 3);
+
             const forecastContainer = document.querySelector("#forecast-list");
             if (forecastContainer) {
-                forecastContainer.innerHTML = daily.map(day => {
-                    const date = new Date(day.dt * 1000).toLocaleDateString('en-US', {weekday: 'long'});
-                    return `<p class="forecast-day"><strong>${date}:</strong> ${Math.round(day.main.temp)}°F</p>`;
-                }).join("");
+                forecastContainer.innerHTML = daily
+                    .map((day) => {
+                        const date = new Date(day.dt * 1000).toLocaleDateString("en-US", { weekday: "long" });
+                        return `<p class="forecast-day"><strong>${date}:</strong> ${Math.round(day.main.temp)}°F</p>`;
+                    })
+                    .join("");
             }
         }
-    } catch (err) { 
-        console.error("Weather Error:", err); 
+    } catch (err) {
+        console.error("Weather Error:", err);
     }
 }
-
 getWeatherData();
