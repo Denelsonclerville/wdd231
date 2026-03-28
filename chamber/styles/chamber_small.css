@@ -152,7 +152,9 @@ nav {
     font-size: 1.1rem;
     font-weight: normal;
 }
-
+.card-events {
+    padding: 15px;
+}
 .weather-layout {
     display: flex;
     align-items: center;

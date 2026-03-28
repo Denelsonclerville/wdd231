@@ -66,7 +66,7 @@
         max-width: 1200px;
         height: 350px;
         margin: 1px auto;
-        background: #ccc url(/chamber/images/slide1.png);
+        background: #ccc url(../images/slide1.png);
         display: flex;
         align-items: center;
         justify-content: center;
