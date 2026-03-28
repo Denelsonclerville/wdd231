@@ -48,12 +48,14 @@
         font-weight: 500;
     }
 
-    .navigation a:hover,
-    .navigation a.active {
+    .navigation a:hover {
         text-decoration: underline;
-        color: #0056b3;
     }
-
+    .navigation a.active {
+        text-decoration: underline; 
+        text-decoration-color: red; 
+        text-decoration-thickness: 2px; 
+    }
     #menu {
         display: none;
     }
@@ -127,7 +129,6 @@
         font-size: 1.1rem;
     }
 
-    /* --- WEATHER SECTION --- */
     .weather-layout {
         display: flex;
         align-items: center;
