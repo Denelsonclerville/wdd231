@@ -57,8 +57,9 @@
 
     #dark-mode-toggle {
         position: absolute;
-        top: 42px;
-        right: 43px;
+        background: none;border: none;
+        top: 41px;
+        right: 39px;
         font-size: 1.2rem;
     }
 
@@ -88,6 +89,8 @@
 
     .cta:hover {
         background-color: #333;
+        color: #ffffff;
+        border-radius: 8px;
         transform: translateY(-2px);
     }
 
