@@ -52,9 +52,9 @@
         text-decoration: underline;
     }
     .navigation a.active {
-        text-decoration: underline; 
-        text-decoration-color: red; 
-        text-decoration-thickness: 2px; 
+        text-decoration: underline;
+        text-decoration-color: red;
+        text-decoration-thickness: 2px;
     }
     #menu {
         display: none;
@@ -177,7 +177,6 @@
         font-size: 0.9rem;
     }
 
-    /* --- SPOTLIGHT --- */
     .spotlight-container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -369,69 +368,79 @@
         color: #004d40;
     }
 
-    #join-main {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 40px 20px;
-    }
-
-    #join-main .join-grid-container {
+    .join-grid-container {
         display: grid;
-        grid-template-columns: 1.8fr 1fr;
-        gap: 40px;
+        grid-template-columns: 1.6fr 1fr;
+        gap: 60px;
         align-items: start;
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
     }
 
-    #join-main fieldset {
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        padding: 20px;
-        margin-bottom: 25px;
-        background-color: #fcfcfc;
+    .form-section {
+        grid-column: 1;
     }
 
-    #join-main label {
+    #chamber-form fieldset {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 25px;
+        background-color: #f9f9f9;
+        margin-bottom: 20px;
+    }
+
+    #chamber-form label {
         display: block;
-        margin: 15px 0 5px;
+        margin-bottom: 15px;
         font-weight: bold;
     }
 
-    #join-main input,
-    #join-main select,
-    #join-main textarea {
+    #chamber-form input,
+    #chamber-form select,
+    #chamber-form textarea {
+        display: block;
         width: 100%;
         padding: 12px;
-        border: 1px solid #aaa;
-        border-radius: 4px;
+        margin-top: 8px;
+        border: 1px solid #bbb;
+        border-radius: 5px;
         box-sizing: border-box;
     }
 
-    #join-main .join-submit {
-        background-color: #0056b3;
-        color: white;
-        padding: 15px 40px;
-        border: none;
-        border-radius: 5px;
-        font-size: 1.1rem;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-
-    #join-main .join-submit:hover {
-        background-color: #333;
+    .membership-cards {
+        grid-column: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 
     .m-card {
-        background-color: #eeeeee;
-        border-left: 8px solid #0056b3;
-        padding: 25px;
-        margin-bottom: 20px;
+        background-color: #eee;
+        padding: 20px;
         border-radius: 8px;
         text-align: center;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ddd;
+        animation: fadeInRight 0.8s ease-out forwards;
+    }
+
+    .join-submit {
+        background-color: #0056b3;
+    }
+    .join-submit:hover {
+        background-color: #e0f2f1;
+        color: #333;
+    }
+    .m-card {
+        background-color: #f0f0f0;
+        border-left: 8px solid #0056b3;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         opacity: 0;
-        transform: translateY(30px);
-        animation: slideUpFade 0.8s ease-out forwards;
+        transform: translateY(20px);
+        animation: slideIn 0.6s ease-out forwards;
     }
 
     .m-card:nth-child(1) {
@@ -445,6 +454,13 @@
     }
     .m-card:nth-child(4) {
         animation-delay: 0.4s;
+    }
+
+    @keyframes slideIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     @keyframes slideUpFade {
@@ -503,19 +519,28 @@
         align-items: center;
     }
 
-    .footer-contact,
+    .footer-contact {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
     .footer-dev {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        text-align: center;
+        text-align: left;
+    }
+
+    footer p {
+        margin: 5px 0;
+        line-height: 1.2;
     }
 
     .social-links {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 15px;
+        gap: 10px;
     }
 
     .social-links a {
