@@ -51,10 +51,9 @@
     .navigation a:hover {
         text-decoration: underline;
     }
-    .navigation a.active {
-        text-decoration: underline;
-        text-decoration-color: red;
-        text-decoration-thickness: 2px;
+    .navigation a:active {
+        color: #f54646;
+        text-decoration-color: #f54646;
     }
     #menu {
         display: none;
@@ -508,6 +507,84 @@
         background: rgba(0, 0, 0, 0.7);
     }
 
+    #discover-grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .discover-card {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas:
+            "title title"
+            "photo info"
+            "button button";
+        background-color: #eee;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .discover-card-title {
+        grid-area: title;
+        margin: 0;
+        padding: 15px;
+        font-size: 1.2rem;
+    }
+
+    .discover-figure {
+        grid-area: photo;
+        margin: 0;
+        padding: 0 0 15px 15px;
+    }
+
+    .discover-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+    }
+
+    .discover-address {
+        grid-area: info;
+        padding: 0 15px;
+        font-style: italic;
+        font-size: 0.9rem;
+        align-self: end;
+    }
+
+    .discover-desc {
+        grid-area: info;
+        padding: 0 15px;
+        font-size: 0.95rem;
+    }
+
+    .discover-btn {
+        grid-area: button;
+        background-color: #333;
+        color: white;
+        border: none;
+        padding: 12px;
+        width: 100%;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .discover-btn:hover {
+        background-color: #555;
+    }
+
+    .discover-img:hover {
+        filter: brightness(1.1);
+        transform: scale(1.02);
+        transition: transform 0.3s ease;
+    }
+
     footer {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -564,4 +641,3 @@
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
 }
-

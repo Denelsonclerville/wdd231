@@ -625,3 +625,102 @@ footer {
         font-size: 1.8rem;
     }
 }
+#discover-main {
+    display: grid;
+    gap: 20px;
+    padding: 15px;
+}
+
+@media (max-width: 640px) {
+    #discover-main {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "msg"
+            "cards";
+    }
+
+    .discover-card {
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .discover-card-title {
+        order: 1;
+        padding: 15px;
+        margin: 0;
+    }
+    .discover-figure {
+        order: 2;
+        margin: 0;
+        width: 100%;
+    }
+    .discover-desc {
+        order: 3;
+        padding: 15px;
+        margin: 0;
+    }
+    .discover-address {
+        order: 4;
+        padding: 0 15px 10px 15px;
+        font-style: italic;
+    }
+    .discover-btn {
+        order: 5;
+        margin: 15px;
+        border-radius: 25px;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+    #discover-main {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "msg msg"
+            "cards cards";
+    }
+
+    .discover-card {
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-areas:
+            "title"
+            "photo"
+            "info"
+            "button";
+        background: #f9f9f9;
+        border: 1px solid #ccc;
+    }
+}
+
+#discover-visitor-msg {
+    grid-area: msg;
+    background: #eef;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+#discover-grid-container {
+    grid-area: cards;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.discover-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.discover-btn {
+    background: #333;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+}
