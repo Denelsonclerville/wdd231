@@ -1,3 +1,3 @@
-import { initNavigation } from './navigation.js';
+import { initNavigation } from './app.js';
 
 initNavigation();

@@ -1,5 +1,4 @@
-import { initNavigation } from './navigation.js';
-import { initOrganizationDirectory } from './organizations.js';
+import { initNavigation, initOrganizationDirectory } from './app.js';
 
 initNavigation();
 initOrganizationDirectory();

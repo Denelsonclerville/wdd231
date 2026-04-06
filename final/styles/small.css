@@ -86,7 +86,7 @@ nav a[aria-current="page"] {
 .page-content {
     max-width: 1120px;
     margin: 0 auto;
-    padding: 1.5rem;
+    padding: 5rem 1.5rem 1.5rem;
 }
 
 .hero {
@@ -123,12 +123,14 @@ nav a[aria-current="page"] {
     display: flex;
     flex-wrap: wrap;
     gap: 0.85rem;
+    align-items: flex-end;
 }
 
 .button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    min-height: 46px;
     padding: 0.95rem 1.4rem;
     border-radius: 999px;
     text-decoration: none;
@@ -307,6 +309,83 @@ nav a[aria-current="page"] {
     padding: 1.25rem;
     text-align: center;
     color: var(--muted);
+}
+
+/* Page-specific styles for differentiation */
+.home-page .hero {
+    background: linear-gradient(to right, #002654, #d21034);
+    color: white;
+    padding: 2rem;
+    border-radius: var(--radius);
+}
+
+.home-page .hero h1,
+.home-page .hero p {
+    color: white;
+}
+
+.organizations-page .directory-intro {
+    background: linear-gradient(to right, #228B22, #32CD32);
+    color: white;
+    padding: 2rem;
+    border-radius: var(--radius);
+    margin-bottom: 2rem;
+}
+
+.organizations-page .directory-intro h2,
+.organizations-page .directory-intro p {
+    color: white;
+}
+
+.support-page .support-page {
+    background: linear-gradient(to right, #FFD700, #FFA500);
+    color: #333;
+    padding: 2rem;
+    border-radius: var(--radius);
+    margin-bottom: 2rem;
+}
+
+.support-page .support-page h2,
+.support-page .support-page p {
+    color: #333;
+}
+
+.form-page .form-page {
+    background: linear-gradient(to right, #800080, #DA70D6);
+    color: white;
+    padding: 2rem;
+    border-radius: var(--radius);
+    margin-bottom: 2rem;
+}
+
+.form-page .form-page h2,
+.form-page .form-page p {
+    color: white;
+}
+
+.results-page .form-results {
+    background: linear-gradient(to right, #FF6347, #FF4500);
+    color: white;
+    padding: 2rem;
+    border-radius: var(--radius);
+    margin-bottom: 2rem;
+}
+
+.results-page .form-results h2,
+.results-page .form-results p {
+    color: white;
+}
+
+.attributions-page .hero {
+    background: linear-gradient(to right, #4682B4, #87CEEB);
+    color: white;
+    padding: 2rem;
+    border-radius: var(--radius);
+}
+
+.attributions-page .hero h2,
+.attributions-page .hero p {
+    color: white;
 }
 
 @media (min-width: 600px) {

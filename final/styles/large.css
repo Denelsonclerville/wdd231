@@ -11,6 +11,13 @@
 
     .hero {
         grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+    }
+
+    .hero-actions,
+    .callout-actions,
+    .org-card-actions {
+        align-items: center;
     }
 
     .intro-cards {

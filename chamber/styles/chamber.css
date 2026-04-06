@@ -126,6 +126,12 @@ nav {
     text-underline-offset: 4px;
 }
 
+#discover-main,
+#thankyou-main,
+#join-main {
+    padding-top: 88px;
+}
+
 .navigation li a.active {
     background-color: #f5f5f5;
     color: #9474ec;
