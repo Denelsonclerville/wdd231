@@ -23,12 +23,12 @@
             </div>
             <nav>
                 <i id="dark-mode-toggle" class="fa-solid fa-circle-half-stroke"></i>
-                <button id="menu" class="toggle" aria-label="Open navigation menu"></button>
+                <button id="menu" class="toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="main-navigation"></button>
 
-                <ul class="navigation">
+                <ul class="navigation" id="main-navigation">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="directory.html">Directory</a></li>
-                    <li><a href="#">Join</a></li>
+                    <li><a href="join.html">Join</a></li>
                     <li><a href="discover.html">Discover</a></li>
                 </ul>
             </nav>
@@ -102,22 +102,26 @@
                     <h2>Membership Levels</h2>
                     <div class="m-card animate-card">
                         <h3>NP Membership</h3>
-                        <button type="button" class="modal-trigger" data-modal="modal-np">View Benefits</button>
+                        <p class="level-info">Non-profit benefit access with community networking.</p>
+                        <button type="button" class="modal-trigger" aria-haspopup="dialog" aria-expanded="false" data-modal="modal-np">View Benefits</button>
                     </div>
 
                     <div class="m-card animate-card">
                         <h3>Bronze Membership</h3>
-                        <button type="button" class="modal-trigger" data-modal="modal-bronze">View Benefits</button>
+                        <p class="level-info">Ideal starter level with directory listing and event access.</p>
+                        <button type="button" class="modal-trigger" aria-haspopup="dialog" aria-expanded="false" data-modal="modal-bronze">View Benefits</button>
                     </div>
 
                     <div class="m-card animate-card">
                         <h3>Silver Membership</h3>
-                        <button type="button" class="modal-trigger" data-modal="modal-silver">View Benefits</button>
+                        <p class="level-info">Enhanced visibility with spotlight features and discounts.</p>
+                        <button type="button" class="modal-trigger" aria-haspopup="dialog" aria-expanded="false" data-modal="modal-silver">View Benefits</button>
                     </div>
 
                     <div class="m-card animate-card">
                         <h3>Gold Membership</h3>
-                        <button type="button" class="modal-trigger" data-modal="modal-gold">View Benefits</button>
+                        <p class="level-info">Premium support, advertising, events, and VIP business access.</p>
+                        <button type="button" class="modal-trigger" aria-haspopup="dialog" aria-expanded="false" data-modal="modal-gold">View Benefits</button>
                     </div>
                 </aside>
             </section>
@@ -133,8 +137,48 @@
                     <button class="close-modal">Close</button>
                 </div>
             </dialog>
-            
-            </main>
+
+            <dialog id="modal-bronze">
+                <div class="modal-content">
+                    <h2>Bronze Membership Benefits</h2>
+                    <p>Cost: $100/year. Basic membership level.</p>
+                    <ul>
+                        <li>Directory listing</li>
+                        <li>Networking events access</li>
+                        <li>Basic advertising opportunities</li>
+                    </ul>
+                    <button class="close-modal">Close</button>
+                </div>
+            </dialog>
+
+            <dialog id="modal-silver">
+                <div class="modal-content">
+                    <h2>Silver Membership Benefits</h2>
+                    <p>Cost: $250/year. Enhanced membership level.</p>
+                    <ul>
+                        <li>All Bronze benefits</li>
+                        <li>Priority event invitations</li>
+                        <li>Website feature on spotlight</li>
+                        <li>Discounted advertising rates</li>
+                    </ul>
+                    <button class="close-modal">Close</button>
+                </div>
+            </dialog>
+
+            <dialog id="modal-gold">
+                <div class="modal-content">
+                    <h2>Gold Membership Benefits</h2>
+                    <p>Cost: $500/year. Premium membership level.</p>
+                    <ul>
+                        <li>All Silver benefits</li>
+                        <li>Executive committee access</li>
+                        <li>Free premium advertising</li>
+                        <li>Business consultation services</li>
+                        <li>VIP networking events</li>
+                    </ul>
+                    <button class="close-modal">Close</button>
+                </div>
+            </dialog>
 
         <footer>
             <div class="footer-contact">

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b5d56"/>
+      <stop offset="100%" stop-color="#f7b267"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#grad)" rx="36"/>
+  <circle cx="400" cy="240" r="100" fill="#ffffff" opacity="0.18"/>
+  <path d="M280 420h240c0 0 20-58 80-120 0 0 28-30 12-76s-60-62-118-62H324c-58 0-96 27-112 64s14 74 14 74c60 64 80 120 80 120Z" fill="#ffffff" opacity="0.2"/>
+  <text x="50%" y="80%" text-anchor="middle" fill="#ffffff" font-family="Inter, sans-serif" font-size="54" font-weight="700">Haiti</text>
+  <text x="50%" y="90%" text-anchor="middle" fill="#ffffff" font-family="Inter, sans-serif" font-size="36">Organization</text>
+</svg>

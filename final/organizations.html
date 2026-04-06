@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haiti Organization Directory</title>
+    <meta name="description" content="Browse 15 Haitian organizations and learn how each group supports education, health, agriculture, and local sustainability.">
+    <meta name="author" content="Denelson Clerville">
+    <meta property="og:title" content="Haiti Organization Directory">
+    <meta property="og:description" content="Discover Haitian organizations with a dynamic, searchable directory and detailed project information.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/favicon.svg">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/small.css">
+    <link rel="stylesheet" href="styles/large.css">
+    <script type="module" src="scripts/organizations-page.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="page-brand">
+            <a href="index.html">Haiti Organizations</a>
+        </div>
+        <button id="mobile-menu" class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+        <nav aria-label="Primary navigation">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="organizations.html" aria-current="page">Organizations</a></li>
+                <li><a href="support.html">How to Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <section class="directory-intro">
+            <h1>Organization Directory</h1>
+            <p>Discover fifteen Haitian organizations and international partners operating in Haiti across health, education, food security, culture, and disaster relief.</p>
+            <div class="filter-row">
+                <span id="org-count"></span>
+                <div id="category-buttons" class="category-buttons"></div>
+            </div>
+        </section>
+
+        <section id="org-list" class="organization-grid" aria-live="polite">
+            <p class="loading">Loading organizations...</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Haiti Organizations Project</p>
+        <p><a href="#" class="footer-video-link">Project demo video (5 minutes, screen + face recording)</a></p>
+    </footer>
+</body>
+</html>

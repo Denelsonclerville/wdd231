@@ -39,10 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const timestampField = document.querySelector("#timestamp");
     if (timestampField) {
         timestampField.value = new Date().toISOString();
-        document.querySelectorAll(".card").forEach((card, i) => {
-            card.style.animationDelay = `${(i + 1) * 0.2}s`;
-            card.classList.add("animate-card");
-        });
     }
 
     const resultsContainer = document.querySelector("#results");
@@ -60,4 +56,56 @@ document.addEventListener("DOMContentLoaded", () => {
         resultsContainer.innerHTML = html + `</div>`;
     }
 
+    const modalTriggers = document.querySelectorAll('.modal-trigger');
+    const closeButtons = document.querySelectorAll('.close-modal');
+    const dialogs = document.querySelectorAll('dialog');
+
+    modalTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (event) => {
+            event.preventDefault();
+            const modalId = trigger.getAttribute('data-modal');
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                if (typeof modal.showModal === 'function') {
+                    modal.showModal();
+                } else {
+                    modal.setAttribute('open', '');
+                }
+                trigger.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = button.closest('dialog');
+            if (modal) {
+                modal.close();
+                const trigger = document.querySelector(`.modal-trigger[data-modal="${modal.id}"]`);
+                if (trigger) trigger.setAttribute('aria-expanded', 'false');
+            }
+        });
+    });
+
+    dialogs.forEach(dialog => {
+        dialog.addEventListener('click', (event) => {
+            if (event.target === dialog) {
+                dialog.close();
+                const trigger = document.querySelector(`.modal-trigger[data-modal="${dialog.id}"]`);
+                if (trigger) trigger.setAttribute('aria-expanded', 'false');
+            }
+        });
+    });
+
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+            dialogs.forEach(dialog => {
+                if (dialog.open) {
+                    dialog.close();
+                    const trigger = document.querySelector(`.modal-trigger[data-modal="${dialog.id}"]`);
+                    if (trigger) trigger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+    });
 });

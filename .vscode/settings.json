@@ -1,0 +1,14 @@
+{
+    "liveServer.settings.CustomBrowser": "microsoft-edge",
+    "liveServer.settings.port": 5505,
+    "prettier.tabWidth": 5,
+    "prettier.printWidth": 150,
+    "fiveServer.port": 5505,
+    "workbench.remoteIndicator.showExtensionRecommendations": false,
+    "workbench.hover.delay": 100,
+    "githubPullRequests.devMode": true,
+    "githubRepositories.indexing.cacheSizeLimit": 500,
+    "github.copilot.chat.agent.autoFix": true,
+    "extensions.experimental.issueQuickAccess": false,
+    "extensions.ignoreRecommendations": true
+}
