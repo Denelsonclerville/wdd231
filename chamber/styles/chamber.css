@@ -454,6 +454,92 @@ nav {
     text-align: center;
 }
 
+#discover-main {
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.discover-title {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#discover-grid-container {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 25px;
+    padding: 10px;
+}
+
+.discover-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.discover-card-title {
+    margin: 0;
+    padding: 15px;
+    font-size: 1.3rem;
+    text-align: center;
+    background-color: #333;
+    color: white;
+}
+
+.discover-figure {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.discover-img {
+    width: 100%;
+    height: 200px; 
+    display: block;
+    object-fit: cover; 
+    transition: none; 
+}
+
+.discover-address {
+    padding: 10px 15px 5px 15px;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.discover-desc {
+    padding: 0 15px 15px 15px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #333;
+}
+
+.discover-btn {
+    background-color: #0056b3; 
+    color: white;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.visit-card {
+    background-color: #c7e94b;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    border: 1px solid #999;
+}
 .weather-content, 
 #forecast-list, 
 .events p {

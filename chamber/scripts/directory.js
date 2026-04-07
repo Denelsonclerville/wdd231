@@ -6,14 +6,12 @@ async function getMembersData() {
           if (!response.ok) throw new Error("Pa ka jwenn done yo");
           const members = await response.json();
 
-          // Kontene pou Anyè (Directory)
           const directoryContainer = document.querySelector("#business-container");
           if (directoryContainer) {
                displayDirectory(members, directoryContainer);
                setupViewButtons(directoryContainer);
           }
 
-          // Kontene pou Spotlight (Sa rubrik la mande)
           const spotlightContainer = document.querySelector(".spotlight-container");
           if (spotlightContainer) {
                displaySpotlights(members, spotlightContainer);
@@ -43,18 +41,12 @@ function displayDirectory(members, container) {
      });
 }
 
-// FONKSYON SPOTLIGHT (Optimize pou Rubrik la)
 function displaySpotlights(members, container) {
-     // 1. Filtre sèlman manm Silver (2) ak Gold (3)
      const eligible = members.filter((m) => m.membership === 2 || m.membership === 3);
-
-     // 2. Melanje yo owaza (Randomize)
      const shuffled = eligible.sort(() => 0.5 - Math.random());
-
-     // 3. Pran 2 oswa 3 manm sèlman
      const selected = shuffled.slice(0, 3);
 
-     container.innerHTML = ""; // Vide kontene a
+     container.innerHTML = "";
 
      selected.forEach((m) => {
           const spotCard = document.createElement("section");
@@ -98,6 +90,4 @@ function setupViewButtons(businessContainer) {
           });
      }
 }
-
-// Lanse pwosesis la
 getMembersData();
