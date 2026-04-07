@@ -185,33 +185,152 @@ nav {
     border-radius: 5px;
 }
 
-
-#chamber-form fieldset {
-    border: 1px solid rgba(34, 63, 120, 0.12);
-    border-radius: 18px;
-    padding: 24px;
-    margin-bottom: 25px;
-    background-color: #ffffff;
-    text-align: left;
+.join-grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    padding: 20px;
+    background-color: #fcfcfc; 
 }
 
-#chamber-form input, #chamber-form select, #chamber-form textarea {
+#chamber-form {
     width: 100%;
-    padding: 14px;
+    max-width: 500px;
+}
+
+#chamber-form fieldset {
+    border: none; 
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 15px 35px rgba(34, 63, 120, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#chamber-form fieldset:hover {
+    transform: translateY(-5px); 
+}
+
+#chamber-form legend {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #2746b3;
+    padding: 0 10px;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+#chamber-form label {
+    display: block;
+    margin-top: 20px;
+    font-weight: 600;
+    color: #444;
+    font-size: 0.9rem;
+}
+
+#chamber-form input, 
+#chamber-form select, 
+#chamber-form textarea {
+    width: 100%;
+    padding: 15px;
     margin-top: 8px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+#chamber-form input:focus {
+    outline: none;
+    border-color: #2746b3;
+    background-color: #ffffff;
 }
 
 .join-submit {
     width: 100%;
-    padding: 16px;
-    background-color: #2746b3;
+    padding: 18px;
+    background: linear-gradient(135deg, #2746b3 0%, #1a3080 100%);
     color: white;
     border: none;
-    border-radius: 12px;
+    border-radius: 15px;
     font-weight: bold;
+    font-size: 1.1rem;
     cursor: pointer;
+    box-shadow: 0 10px 20px rgba(39, 70, 179, 0.3);
+    transition: all 0.3s ease;
+}
+
+.join-submit:hover {
+    box-shadow: 0 15px 25px rgba(39, 70, 179, 0.4);
+    filter: brightness(1.1);
+}
+
+.membership-cards {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.m-card {
+    background-color: #f7f9fe;
+    border-left: none; 
+    border-top: 2px solid #0056b3; 
+    padding: 24px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(32, 61, 118, 0.08);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideIn 0.6s ease-out forwards;
+    
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+
+.m-card:hover, .m-card:active {
+    transform: scale(1.03); 
+    background-color: #ffffff; 
+    box-shadow: 0 15px 35px rgba(32, 61, 118, 0.15); /* Lonbraj la vin pi fon */
+    border-top-color: #2746b3;
+}
+
+.m-card:nth-child(1) { animation-delay: 0.1s; }
+.m-card:nth-child(2) { animation-delay: 0.2s; }
+.m-card:nth-child(3) { animation-delay: 0.3s; }
+.m-child:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.m-card h3 {
+    margin-top: 0;
+    color: #222;
+}
+
+.modal-trigger {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.modal-trigger:hover {
+    background-color: #e0e0e0;
 }
 
 .home-container {
@@ -229,6 +348,82 @@ nav {
     padding: 10px;
     text-align: center;
     font-size: 1.1rem;
+}
+#thankyou-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; 
+    padding: 20px;
+    background: linear-gradient(180deg, #f7f9fe 0%, #ffffff 100%);
+}
+
+.confirmation-card {
+    padding: 40px 20px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 15px 45px rgba(32, 61, 118, 0.12);
+}
+
+.confirmation-card h1 {
+    color: #2746b3;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.confirmation-card p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.user-data-display {
+    background-color: #f0f4ff;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: left; 
+    margin: 25px 0;
+    border-left: 5px solid #2746b3;
+}
+
+.user-data-display p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+    color: #333;
+    border-bottom: 1px dashed #cbd5e1;
+    padding-bottom: 5px;
+}
+
+.user-data-display strong {
+    color: #2746b3;
+}
+
+.cta-back {
+    display: inline-block;
+    background-color: #2746b3;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(39, 70, 179, 0.2);
+}
+
+.cta-back:hover {
+    background-color: #1a3080;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(39, 70, 179, 0.3);
+}
+
+.next-steps {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #777;
 }
 
 .weather-content, 
