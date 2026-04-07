@@ -123,7 +123,8 @@ nav {
 } 
 
 .navigation li a.active {
-    background-color: #f5f0ff;    border-left: 2px solid #9474ec;
+    background-color: #f5f0ff;
+    border-left: 2px solid #9474ec;
     color: #9474ec;
 }
 
