@@ -117,9 +117,6 @@ nav {
 .navigation li a.active {
     background-color: #f5f0ff;    border-left: 2px solid #9474ec;
     color: #9474ec;
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
 }
 
 #dark-mode-toggle {
@@ -211,6 +208,63 @@ nav {
     border-radius: 12px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.discover-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 10px;
+}
+
+.stats-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stats-card h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.discover-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.discover-card h2 {
+    padding: 15px;
+    font-size: 1.25rem;
+    background-color: #eee;
+    margin: 0;
+}
+
+.discover-card figure {
+    margin: 0;
+    width: 100%;
+}
+
+.discover-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.discover-card img.loaded {
+    opacity: 1;
+}
+
+.discover-card p {
+    padding: 15px;
+    line-height: 1.6;
 }
 
 footer {
