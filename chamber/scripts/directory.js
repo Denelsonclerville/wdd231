@@ -1,93 +1,37 @@
-const membersUrl = "data/members.json";
+import { discoveries } from "../data/discover.mjs";
 
-async function getMembersData() {
-     try {
-          const response = await fetch(membersUrl);
-          if (!response.ok) throw new Error("Pa ka jwenn done yo");
-          const members = await response.json();
+const today = Date.now();
+const msInDay = 86400000;
 
-          const directoryContainer = document.querySelector("#business-container");
-          if (directoryContainer) {
-               displayDirectory(members, directoryContainer);
-               setupViewButtons(directoryContainer);
-          }
-
-          const spotlightContainer = document.querySelector(".spotlight-container");
-          if (spotlightContainer) {
-               displaySpotlights(members, spotlightContainer);
-          }
-     } catch (error) {
-          console.error("Members Error:", error);
-     }
+const grid = document.querySelector("#discover-grid-container");
+if (grid && discoveries) {
+    discoveries.forEach((item, index) => {
+        const card = document.createElement("section");
+        card.className = `discover-card card-${index + 1}`;
+        card.innerHTML = `
+            <h2 class="discover-card-title">${item.title}</h2>
+            <figure class="discover-figure">
+                <img src="${item.image}" alt="${item.title}" loading="lazy" width="300" height="200" class="discover-img">
+            </figure>
+            <address class="discover-address">${item.address}</address>
+            <p class="discover-desc">${item.description}</p>
+            <button class="discover-btn">Learn More</button>`;
+        grid.appendChild(card);
+    });
 }
 
-function displayDirectory(members, container) {
-     container.innerHTML = "";
-     members.forEach((m) => {
-          const card = document.createElement("section");
-          card.className = "business-card";
-          card.innerHTML = `
-            <div class="card-logo">
-                <img src="images/${m.image}" alt="Logo ${m.name}" loading="lazy">
-            </div>
-            <h3>${m.name}</h3>
-            <p class="address">${m.address}</p>
-            <p class="phone">${m.phone}</p>
-            <p class="url">
-                <a href="https://${m.website}" target="_blank">${m.website}</a>
-            </p>
-        `;
-          container.appendChild(card);
-     });
+const msg = document.querySelector("#discover-visitor-msg");
+if (msg) {
+    const lastVisit = window.localStorage.getItem("last-visit-ls");
+    if (!lastVisit) {
+        msg.textContent = "Welcome! Let us know if you have any questions.";
+    } else {
+        const daysBetween = Math.floor((today - parseInt(lastVisit)) / msInDay);
+        if (daysBetween < 1) {
+            msg.textContent = "Welcome back to the discover page!";
+        } else {
+            msg.textContent = `You last visited ${daysBetween} ${daysBetween === 1 ? "day" : "days"} ago.`;
+        }
+    }
+    window.localStorage.setItem("last-visit-ls", today.toString());
 }
-
-function displaySpotlights(members, container) {
-     const eligible = members.filter((m) => m.membership === 2 || m.membership === 3);
-     const shuffled = eligible.sort(() => 0.5 - Math.random());
-     const selected = shuffled.slice(0, 3);
-
-     container.innerHTML = "";
-
-     selected.forEach((m) => {
-          const spotCard = document.createElement("section");
-          spotCard.className = "spotlight-card";
-
-          spotCard.innerHTML = `
-            <h3>${m.name}</h3>
-            <p class="tagline"><em>${m.otherInfo || "Slogan Biznis la"}</em></p>
-            <hr>
-            <div class="spot-info-wrapper">
-                <img src="images/${m.image}" alt="Logo ${m.name}" loading="lazy">
-                <div class="spot-details">
-                    <p>EMAIL: <strong>${m.name.toLowerCase().replace(/\s/g, "")}@gmail.com</strong></p>
-                    <p>PHONE: <strong>${m.phone}</strong></p>
-                    <p>URL: <a href="https://${m.website}" target="_blank"><strong>${m.website}</strong></a></p>
-                    <p>Membership: <strong>${m.membership}</strong></p>
-                </div>
-            </div>
-        `;
-          container.appendChild(spotCard);
-     });
-}
-
-function setupViewButtons(businessContainer) {
-     const gridBtn = document.querySelector("#gridViewBtn");
-     const listBtn = document.querySelector("#listViewBtn");
-
-     if (gridBtn && listBtn) {
-          gridBtn.addEventListener("click", () => {
-               businessContainer.classList.add("grid");
-               businessContainer.classList.remove("list");
-               gridBtn.classList.add("active");
-               listBtn.classList.remove("active");
-          });
-
-          listBtn.addEventListener("click", () => {
-               businessContainer.classList.add("list");
-               businessContainer.classList.remove("grid");
-               listBtn.classList.add("active");
-               gridBtn.classList.remove("active");
-          });
-     }
-}
-getMembersData();

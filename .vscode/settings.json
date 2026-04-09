@@ -10,5 +10,7 @@
     "githubRepositories.indexing.cacheSizeLimit": 500,
     "github.copilot.chat.agent.autoFix": true,
     "extensions.experimental.issueQuickAccess": false,
-    "extensions.ignoreRecommendations": true
+    "extensions.ignoreRecommendations": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "notebook.defaultFormatter": "esbenp.prettier-vscode"
 }
