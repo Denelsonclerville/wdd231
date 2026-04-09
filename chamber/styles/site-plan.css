@@ -1,0 +1,118 @@
+:root {
+    --primary-blue: #17408B;
+    --haiti-red: #D21034;
+    --light-bg: #f9f9f9;
+    --white: #ffffff;
+    --text-color: #333;
+    --heading-font: 'Montserrat', sans-serif;
+    --body-font: 'Roboto', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--body-font);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--white); 
+}
+
+header {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 3rem 1rem;
+    text-align: center;
+    border-bottom: 8px solid var(--haiti-red);
+    width: 100%; 
+}
+
+header h1 {
+    font-family: var(--heading-font);
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+
+header h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+main {
+    max-width: 950px;
+    margin: 40px auto; 
+    padding: 0 20px;
+}
+
+section {
+    margin-bottom: 50px;
+}
+
+h2 {
+    font-family: var(--heading-font);
+    color: var(--primary-blue);
+    border-left: 5px solid var(--haiti-red);
+    padding-left: 15px;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+h3 {
+    font-family: var(--heading-font);
+    margin-top: 20px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #eee;
+    margin: 40px 0;
+}
+
+.palette {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.wireframe {
+    background: var(--light-bg);
+    padding: 20px;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.wireframe img {
+    height: auto;
+    width: 100%;
+    max-width: 700px;
+    border: 1px solid #999;
+    background: #fff;
+    margin-top: 15px;
+}
+
+footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 60px;
+    border-top: 4px solid var(--primary-blue);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    header {
+        padding: 2rem 1rem;
+    }
+}

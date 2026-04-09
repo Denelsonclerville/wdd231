@@ -1,87 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="an aspiring full-stack developer from Port-au-Prince, Haiti, with a background in business administration and digital marketing.">
-    <meta name="author" content="Denelson Clerville">
-    <title>My Biography Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="icon" href="images/favicon.ico">
-    <link rel="stylesheet" href="styles/small.css">
-    <link rel="stylesheet" href="styles/large.css">
-
-    <script src="scripts/navigation.js" defer></script>
-    <script src="scripts/course-data.js" defer></script>
+    <title>Site Plan - Haiti Organizations Directory | Denelson Clerville</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/site-plan.css">
 </head>
 <body>
     <header>
-        <button id="hamburger" aria-label="Toggle navigation menu">☰</button>
-        <nav aria-label="Main navigation">
-            <ul>
-                <li><a href="#" aria-current="page">Home</a></li>
-                <li><a href="./chamber/directory.html">Chamber Project</a></li>
-                <li><a href="final/index.html">Final Project</a></li>
-            </ul>
-        </nav>
+        <h1>Haiti Organizations Site Plan</h1>
+        <h2>Denelson Clerville</h2>
+        <p>WDD 231 - Web Frontend Development II</p>
     </header>
-    <main>
-        <h1>Home</h1>
-    <aside class="bio">
-        <section class="about-me">
-            <h2 class="section-header">About Me</h2>
-            <div class="section-content">
-                <p>
-                    Hello, my name is Denelson Clerville from Port-au-Prince, Haiti.
-                    I am an aspiring full-stack developer passionate about building
-                    modern and impactful digital solutions.
-                </p>
-                <p>
-                    With a background in business administration and social media marketing,
-                    I combine technical knowledge with strategic thinking. I am continuously
-                    strengthening my front-end and back-end skills while exploring innovative
-                    ways to use technology to create value.
-                </p>
-            </div>
-        </section>
-        <section class="photo-section">
-            <h2 class="section-header">Student Photo</h2>
-            <div class="photo-box">
-                <img src="images/profile.png" alt="Portrait of Denelson Clerville" loading="lazy">
-            </div>
-        </section>
-     </aside>
-        <section class="courses-section">
-            <h2 class="section-header">Web Certificate Courses</h2>
-            <div class="section-content">
-                <div class="course-filters">
-                    <button id="all-courses">All</button>
-                    <button id="cse-courses">CSE</button>
-                    <button id="wdd-courses">WDD</button>
-                </div>
-                <div id="course-container"></div>
-                <p id="total-credits"></p>
-            </div>
-        </section>
-    
-        <div class="social-links">
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
-                <i class="fa-brands fa-github"></i></a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer"
-                aria-label="LinkedIn Profile">
-                <i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer"
-                aria-label="Twitter Profile">
-                <i class="fa-brands fa-x-twitter"></i></a>
-        </div>
-    </main>
-    <footer>
-        <p>&copy; <span id="currentyear"></span> Denelson Clerville • Petion-Ville, Haiti</p>
-        <p>Last modified: <span id="lastModified"></span></p>
 
+    <main>
+        <section>
+            <h2>Site Name</h2>
+            <p><strong>Name:</strong> Haiti Connect Directory</p>
+            <p>The name was chosen because it represents the bridge between local organizations and the citizens or donors who need to find them quickly.</p>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Site Purpose</h2>
+            <p>The purpose of this website is to provide a reliable, centralized database of organizations in Haiti. It aims to help users find contact information, physical addresses, and service descriptions for NGOs, local businesses, and community groups to foster better collaboration and accessibility.</p>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Scenarios</h2>
+            <p>The following questions reflect the needs of the target audience:</p>
+            <ul>
+                <li>"Where can I find a verified NGO in Pétion-Ville that provides vocational training for young adults?"</li>
+                <li>"I am looking for the official contact number and office hours for the local Chamber of Commerce to register my new small business."</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Color Scheme</h2>
+            <p>This plan uses colors inspired by the resilience and heritage of Haiti:</p>
+            <div class="palette">
+                <div style="background-color: #17408B; color: white; padding: 15px; border-radius: 5px; margin-bottom: 10px;">
+                    <strong>Primary Blue (#17408B):</strong> Used for headers, navigation, and primary headings.
+                </div>
+                <div style="background-color: #D21034; color: white; padding: 15px; border-radius: 5px; margin-bottom: 10px;">
+                    <strong>Haiti Red (#D21034):</strong> Used for call-to-action buttons, accents, and important highlights.
+                </div>
+                <div style="background-color: #FFFFFF; color: #333; padding: 15px; border-radius: 5px; border: 1px solid #ddd;">
+                    <strong>Background White (#FFFFFF):</strong> Used for the main content area to ensure high readability.
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Typography</h2>
+            <p style="font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 1.2rem;">Heading Font: Montserrat</p>
+            <p>Montserrat will be used for all titles (H1, H2, H3) to provide a modern, clean, and professional look.</p>
+            
+            <p style="font-family: 'Roboto', sans-serif; font-size: 1.1rem;">Body Font: Roboto</p>
+            <p>Roboto is chosen for paragraphs and lists due to its excellent legibility on both mobile and desktop screens.</p>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Wireframes</h2>
+            <p>Below are the structural layouts for the Home Page.</p>
+            
+            <div class="wireframe">
+                <h3>Mobile View</h3>
+                <img src="images/mobile-wireframe.png" alt="Mobile Wireframe Diagram" style="max-width: 250px; border: 1px solid #000;">
+            </div>
+
+            <div class="wireframe">
+                <h3>Desktop View</h3>
+                <img src="images/desktop-wireframe.png" alt="Desktop Wireframe Diagram" style="max-width: 100%; height: auto; border: 1px solid #000;">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 | Site Plan | Denelson Clerville | Pétion-Ville, Haiti</p>
     </footer>
 </body>
-</html>
+</html
