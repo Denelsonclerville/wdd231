@@ -1,6 +1,5 @@
 [
   {
-    "id": "wfp-haiti",
     "name": "World Food Programme Haiti",
     "category": "Food Security",
     "location": "Port-au-Prince",
@@ -11,11 +10,10 @@
     "programs": "School meals, nutrition support, and cash-based transfers.",
     "impact": "Assisted over 1 million people with lifesaving food aid during crises.",
     "website": "https://www.wfp.org/countries/haiti",
-    "image": "images/img1.jpeg",
+    "image": "images/wfp-logo.jfif",
     "description": "Provides emergency food relief and programs to improve nutrition and resilience across Haiti."
   },
   {
-    "id": "unicef-haiti",
     "name": "UNICEF Haiti",
     "category": "Children",
     "location": "Port-au-Prince",
@@ -26,11 +24,10 @@
     "programs": "Vaccination campaigns, childhood education, and water sanitation.",
     "impact": "Supported millions of Haitian children with vaccines and clean water access.",
     "website": "https://www.unicef.org/haiti/",
-    "image": "images/unucef-logo.webp",
+    "image": "images/unicef-logo.webp",
     "description": "Supports Haitian children with health, education, and emergency response services."
   },
   {
-    "id": "iom-haiti",
     "name": "IOM Haiti",
     "category": "Migration",
     "location": "Port-au-Prince",
@@ -45,7 +42,6 @@
     "description": "Provides protection and assistance for migrants and displaced communities in Haiti."
   },
   {
-    "id": "haitian-red-cross",
     "name": "Haitian Red Cross",
     "category": "Disaster Relief",
     "location": "Port-au-Prince",
@@ -75,7 +71,6 @@
     "description": "Partners with local communities to provide healthcare and public health services in rural Haiti."
   },
   {
-    "id": "fonkoze",
     "name": "Fonkoze",
     "category": "Finance",
     "location": "Port-au-Prince",
@@ -90,7 +85,6 @@
     "description": "Empowers vulnerable Haitians through microfinance, business training, and community banking."
   },
   {
-    "id": "digicel-foundation",
     "name": "Digicel Foundation Haiti",
     "category": "Education",
     "location": "Port-au-Prince",
@@ -105,7 +99,6 @@
     "description": "Invests in education and youth programs to strengthen Haiti’s future workforce."
   },
   {
-    "id": "ALLIAD",
     "name": "Haitian Health Foundation",
     "category": "Health",
     "location": "Labadie",
@@ -120,7 +113,6 @@
     "description": "Provides rural healthcare, nutrition, and economic support for families in Haiti."
   },
   {
-    "id": "FAO-Haiti",
     "name": "Soil Missions International Haiti",
     "category": "Infrastructure",
     "location": "Cap-Haïtien",
@@ -131,7 +123,7 @@
     "programs": "Well construction, water purification, and sanitation training.",
     "impact": "Provided safe drinking water to thousands of families in northern Haiti.",
     "website": "https://watermissions.org/",
-    "image": "images/fao-logo.webp",
+    "image": "images/logo.webp",
     "description": "Creates clean water access and hygiene education for Haitian communities."
   }
 ]

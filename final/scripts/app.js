@@ -1,206 +1,226 @@
-export function initNavigation(toggleId = 'mobile-menu') {
-    const menuButton = document.getElementById(toggleId);
-    const nav = document.querySelector('nav');
+const jsonPath = "data/organizations.json";
 
-    function closeMenu() {
-        nav.classList.remove('open');
-        menuButton?.setAttribute('aria-expanded', 'false');
-    }
+async function initDirectory() {
+    const orgList = document.querySelector("#org-list");
+    const countDisplay = document.querySelector("#org-count-display");
+    
+    if (!orgList) return;
 
-    if (menuButton) {
-        menuButton.addEventListener('click', (event) => {
-            event.stopPropagation();
-            nav.classList.toggle('open');
-            const isOpen = nav.classList.contains('open');
-            menuButton.setAttribute('aria-expanded', String(isOpen));
-        });
-    }
-
-    document.addEventListener('click', (event) => {
-        if (!nav.contains(event.target) && event.target !== menuButton) {
-            closeMenu();
-        }
-    });
-
-    document.querySelectorAll('nav a').forEach((link) => {
-        link.addEventListener('click', closeMenu);
-    });
-
-    const currentPage = window.location.pathname.split('/').pop();
-    document.querySelectorAll('nav a').forEach((link) => {
-        const href = link.getAttribute('href');
-        if (href === currentPage || (href === 'index.html' && currentPage === '')) {
-            link.setAttribute('aria-current', 'page');
-        } else {
-            link.removeAttribute('aria-current');
-        }
-    });
-}
-
-export async function loadOrganizationData() {
-    const response = await fetch('data/organizations.json');
-    if (!response.ok) {
-        throw new Error(`Network response was not ok: ${response.status}`);
-    }
-
-    const organizations = await response.json();
-    return organizations;
-}
-
-export function getCategories(organizations) {
-    return ['All', ...new Set(organizations.map(org => org.category))];
-}
-
-const selectedCategoryKey = 'haiti-orgs-selected-category';
-
-export function getSelectedCategory() {
-    const saved = localStorage.getItem(selectedCategoryKey);
-    return saved ? saved : 'All';
-}
-
-export function saveSelectedCategory(category) {
-    localStorage.setItem(selectedCategoryKey, category);
-}
-
-export function createOrganizationModal() {
-    const modalRoot = document.createElement('div');
-    modalRoot.className = 'modal hidden';
-    modalRoot.innerHTML = `
-        <div class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
-            <div class="modal-content">
-                <button type="button" class="modal-close" aria-label="Close organization details">×</button>
-                <div class="modal-body" id="modal-body"></div>
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(modalRoot);
-
-    const closeButton = modalRoot.querySelector('.modal-close');
-    const backdrop = modalRoot.querySelector('.modal-backdrop');
-    const body = modalRoot.querySelector('#modal-body');
-
-    function closeModal() {
-        modalRoot.classList.add('hidden');
-        modalRoot.classList.remove('open');
-    }
-
-    function openModal(contentHtml) {
-        body.innerHTML = contentHtml;
-        modalRoot.classList.remove('hidden');
-        modalRoot.classList.add('open');
-        closeButton.focus();
-    }
-
-    closeButton.addEventListener('click', closeModal);
-    backdrop.addEventListener('click', (event) => {
-        if (event.target === backdrop) {
-            closeModal();
-        }
-    });
-
-    document.addEventListener('keydown', (event) => {
-        if (!modalRoot.classList.contains('open')) return;
-        if (event.key === 'Escape') {
-            closeModal();
-        }
-    });
-
-    return { openModal, closeModal };
-}
-
-export async function initOrganizationDirectory() {
-    const orgList = document.getElementById('org-list');
-    const orgCount = document.getElementById('org-count');
-    const categoryButtons = document.getElementById('category-buttons');
-    let organizations = [];
-    const modal = createOrganizationModal();
-    const savedCategory = getSelectedCategory();
+    const modalElement = createModal();
 
     try {
-        organizations = await loadOrganizationData();
-        renderCategories(getCategories(organizations), savedCategory);
-        renderOrganizationCards(organizations, savedCategory);
-    } catch (error) {
-        orgList.innerHTML = '<div class=\"loading\">Unable to load organizations at this time.</div>';
-        console.error(error);
-    }
+        const response = await fetch(jsonPath);
+        let organizations = await response.json();
 
-    function renderCategories(categories, activeCategory = 'All') {
-        categoryButtons.innerHTML = categories.map(category => `
-            <button type=\"button\" data-category=\"${category}\">${category}</button>
-        `).join('');
+        const render = (data, showFounded = false) => {
+            if (countDisplay) countDisplay.textContent = `Showing ${data.length} organizations`;
+            
+            orgList.innerHTML = data.map(org => `
+                <div class="organization-card">
+                    <div class="card-top">
+                        <h3>${org.name}</h3>
+                        <p class="category-label">${org.category}</p>
+                    </div>
+                    <hr class="card-divider">
+                    <div class="card-middle">
+                        <div class="card-text">
+                            <p class="dynamic-info">
+                                <strong>${showFounded ? 'Founded: ' + org.founded : 'Phone: ' + org.phone}</strong>
+                            </p>
+                            <p class="mission-text">${org.description || org.mission.substring(0, 85)}...</p>
+                        </div>
+                        <div class="card-image-wrapper">
+                            <img src="${org.image}" alt="${org.name}" class="small-thumb" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="details-btn-styled see-more-btn" data-name="${org.name}">See More</button>
+                    </div>
+                </div>`).join('');
 
-        categoryButtons.querySelectorAll('button').forEach(button => {
-            button.addEventListener('click', () => {
-                const category = button.dataset.category;
-                saveSelectedCategory(category);
-                categoryButtons.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                renderOrganizationCards(organizations, category);
+            document.querySelectorAll(".see-more-btn").forEach(btn => {
+                btn.onclick = () => {
+                    const org = organizations.find(o => o.name === btn.dataset.name);
+                    showModal(org, modalElement);
+                };
             });
-        });
+        };
 
-        const targetButton = Array.from(categoryButtons.querySelectorAll('button')).find(button => button.dataset.category === activeCategory) || categoryButtons.querySelector('button');
-        targetButton?.classList.add('active');
-    }
+        document.querySelector("#filter-all").onclick = (e) => {
+            setActive(e.target);
+            render(organizations, false);
+        };
 
-    function renderOrganizationCards(list, category = 'All') {
-        const filtered = category === 'All' ? list : list.filter(org => org.category === category);
+        document.querySelector("#filter-new").onclick = (e) => {
+            setActive(e.target);
+            const sorted = [...organizations].sort((a, b) => b.founded - a.founded);
+            render(sorted, true);
+        };
 
-        if (!filtered.length) {
-            orgList.innerHTML = '<p class=\"loading\">No organizations match this category.</p>';
-            orgCount.textContent = '0 organizations found.';
-            return;
+        document.querySelector("#filter-old").onclick = (e) => {
+            setActive(e.target);
+            const sorted = [...organizations].sort((a, b) => a.founded - b.founded);
+            render(sorted, true);
+        };
+
+        function setActive(btn) {
+            document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
         }
 
-        orgCount.textContent = `${filtered.length} organizations found`;
-        orgList.innerHTML = filtered.map(org => `
-            <article class="organization-card">
-                <img src="${org.image}" alt="${org.name} illustration" loading="lazy">
-                <div class="org-card-body">
-                    <h2>${org.name}</h2>
-                    <div class="org-card-meta">
-                        <span>${org.category}</span>
-                        <span>${org.location}</span>
-                        <span>${org.founded}</span>
-                    </div>
-                    <p>${org.description}</p>
-                    <div class="org-card-meta">
-                        <span>${org.address}</span>
-                        <span>${org.phone}</span>
-                    </div>
-                    <div class="org-card-actions">
-                        <button type="button" class="button button-secondary details-button" data-id="${org.id}">More details</button>
-                        <a class="button button-primary" href="${org.website}" target="_blank" rel="noopener noreferrer">Visit website</a>
-                    </div>
-                </div>
-            </article>
-        `).join('');
+        render(organizations, false);
 
-        orgList.querySelectorAll('.details-button').forEach(button => {
-            button.addEventListener('click', () => {
-                const id = button.dataset.id;
-                const organization = organizations.find(item => item.id === id);
-                if (organization) {
-                    openOrganizationModal(organization);
-                }
-            });
-        });
-    }
-
-    function openOrganizationModal(org) {
-        modal.openModal(`
-            <h2 id="modal-title">${org.name}</h2>
-            <p class="modal-meta"><strong>Category:</strong> ${org.category}</p>
-            <p><strong>Location:</strong> ${org.location}</p>
-            <p><strong>Address:</strong> ${org.address}</p>
-            <p><strong>Phone:</strong> ${org.phone}</p>
-            <p><strong>Founded:</strong> ${org.founded}</p>
-            <p><strong>Mission:</strong> ${org.mission}</p>
-            <p><strong>Programs:</strong> ${org.programs}</p>
-            <p>${org.impact}</p>
-            <p><a href="${org.website}" target="_blank" rel="noopener noreferrer">Visit organization website</a></p>
-        `);
+    } catch (err) {
+        console.error(err);
     }
 }
+
+function createModal() {
+    let modal = document.querySelector("#org-modal");
+    if (modal) return modal;
+
+    modal = document.createElement('div');
+    modal.id = "org-modal";
+    modal.className = "modal hidden";
+    modal.innerHTML = `
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body"></div>
+        </div>`;
+    document.body.appendChild(modal);
+
+    modal.querySelector(".close-modal").onclick = () => modal.classList.add("hidden");
+    window.onclick = (event) => { if (event.target == modal) modal.classList.add("hidden"); };
+    
+    return modal;
+}
+
+function showModal(org, modal) {
+    const body = modal.querySelector("#modal-body");
+    body.innerHTML = `
+        <div class="modal-header">
+            <img src="${org.image}" alt="${org.name}" style="width: 80px; height: auto; border-radius: 8px;">
+            <h2>${org.name}</h2>
+        </div>
+        <div class="modal-grid-info">
+            <p><strong>Category:</strong> ${org.category}</p>
+            <p><strong>Founded:</strong> ${org.founded}</p>
+            <p><strong>Location:</strong> ${org.location}</p>
+            <p><strong>Phone:</strong> ${org.phone}</p>
+        </div>
+        <hr>
+        <p><strong>Mission:</strong> ${org.mission}</p>
+        <p><strong>Programs:</strong> ${org.programs}</p>
+        <p><strong>Impact:</strong> ${org.impact}</p>
+        <div class="modal-footer-btn">
+            <a href="${org.website}" target="_blank" class="details-btn-styled">Official Website</a>
+        </div>
+    `;
+    modal.classList.remove("hidden");
+}
+
+let slideIndex = 0;
+let allOrgs = [];
+
+async function initContactPage() {
+    const wrapper = document.querySelector("#slides-wrapper");
+
+    if (wrapper) {
+        try {
+            const response = await fetch(jsonPath);
+            allOrgs = await response.json();
+            
+            const startSlideshow = () => {
+                wrapper.style.opacity = '0';
+                setTimeout(() => {
+                    wrapper.innerHTML = "";
+                    for (let i = 0; i < 3; i++) {
+                        const index = (slideIndex + i) % allOrgs.length;
+                        const org = allOrgs[index];
+                        const slide = document.createElement("div");
+                        slide.className = "slide-item fade-in";
+                        slide.innerHTML = `
+                            <img src="${org.image}" alt="${org.name}">
+                            <p class="org-name-slide">${org.name}</p>
+                            <a href="${org.website}" target="_blank" class="button button-primary slide-visit-btn">Visit Website</a>
+                        `;
+                        wrapper.appendChild(slide);
+                    }
+                    wrapper.style.opacity = '1';
+                    slideIndex = (slideIndex + 3) % allOrgs.length;
+                }, 800);
+            };
+
+            startSlideshow();
+            setInterval(startSlideshow, 15000);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    const contactForm = document.querySelector("#contact-form");
+    if (contactForm) {
+        const fields = ["fname", "email", "org-choice", "description"];
+        const timestamp = document.querySelector("#timestamp");
+        
+        if (timestamp) timestamp.value = new Date().toISOString();
+
+        fields.forEach(id => {
+            const el = document.getElementById(id);
+            if (!el) return;
+
+            const saved = localStorage.getItem(`contact_${id}`);
+            if (saved) el.value = saved;
+
+            el.addEventListener("input", () => {
+                localStorage.setItem(`contact_${id}`, el.value);
+            });
+        });
+
+        contactForm.addEventListener("submit", (e) => {
+            const nameField = document.getElementById("fname");
+            const namePattern = /^[a-zA-Z\s]{3,}$/;
+            
+            if (!namePattern.test(nameField.value)) {
+                e.preventDefault();
+                alert("Please enter a valid name (at least 3 letters).");
+                return;
+            }
+            
+            fields.forEach(id => localStorage.removeItem(`contact_${id}`));
+        });
+    }
+}
+
+function setupNavigation() {
+    const menuBtn = document.querySelector("#mobile-menu");
+    const nav = document.querySelector("nav");
+    
+    if (menuBtn && nav) {
+        menuBtn.onclick = () => {
+            nav.classList.toggle("open");
+            menuBtn.textContent = nav.classList.contains("open") ? "✕" : "☰";
+        };
+    }
+
+    const currentPath = window.location.pathname.split("/").pop() || "index.html";
+    document.querySelectorAll("nav a").forEach(link => {
+        if (link.getAttribute("href") === currentPath) {
+            link.classList.add("active");
+        }
+    });
+}
+
+function setupFooter() {
+    const yearSpan = document.querySelector("#year");
+    const lastModSpan = document.querySelector("#lastModified");
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+    if (lastModSpan) lastModSpan.textContent = document.lastModified;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    setupNavigation();
+    setupFooter();
+    initDirectory();
+    initContactPage();
+})

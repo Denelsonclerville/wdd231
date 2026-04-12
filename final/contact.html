@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Haiti Organizations Project</title>
+    <meta name="description" content="Get in touch with us or learn more about the organizations working in Haiti.">
+    <meta name="author" content="Denelson Clerville">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/small.css">
+    <link rel="stylesheet" href="styles/large.css">
+    <script src="scripts/eseye.js" defer></script>
+    <script src="scripts/app.js" defer></script>
+</head>
+<body class="contact-page">
+    <header class="site-header">
+        <div class="page-brand">
+            <a href="index.html">Haiti Organizations</a>
+        </div>
+        <button id="mobile-menu" class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+        <nav aria-label="Primary navigation">
+            <ul id="primary-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="organizations.html">Organizations</a></li>
+                <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <section class="org-slideshow-container">
+            <div id="slides-wrapper" class="slides-grid"></div>
+        </section>
+
+        <div class="contact-layout">
+            <section class="form-section">
+                <h2>Organization Form</h2>
+                <form action="thankyou.html" method="get" id="contact-form">
+                    <fieldset>
+                        <legend>Personal Information</legend>
+                        <label for="fname">Full Name*
+                            <input type="text" name="fname" id="fname" autocomplete="name" placeholder="John Doe" required>
+                        </label>
+                        <label for="email">Email Address*
+                            <input type="email" name="email" id="email" autocomplete="email" placeholder="example@domain.com" required>
+                        </label>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Message Details</legend>
+                        <label for="org-choice">Interested in:
+                            <select name="org-choice" id="org-choice">
+                                <option value="" disabled selected>Select an organization...</option>
+                                <option value="education">Education Initiatives</option>
+                                <option value="health">Health Services</option>
+                                <option value="development">Sustainable Development</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </label>
+                        <label for="description">Tell us more about your inquiry
+                            <textarea name="description" id="description" rows="5" placeholder="How can we help you?"></textarea>
+                        </label>
+                    </fieldset>
+
+                    <input type="hidden" name="timestamp" id="timestamp">
+                    <input type="submit" value="Submit" class="button button-primary">
+                </form>
+            </section>
+
+            <aside class="sidebar-contact">
+                <div class="newsletter-card">
+                    <h3>Stay Connected</h3>
+                    <p>Subscribe to our newsletter for monthly updates on community projects in Haiti.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" aria-label="Email for newsletter" required>
+                        <button type="submit" class="button button-secondary">Subscribe</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-info">
+            <p><strong>Haiti Organizations Project</strong></p>
+            <p>Port-au-Prince, Haiti</p>
+            <p>WDD 231 Final Project</p>
+        </div>
+
+        <div class="footer-social">
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-legal">
+            <p>&copy; <span id="year"></span> | Denelson Clerville</p>
+            <p>Last Modified: <span id="lastModified"></span></p>
+        </div>
+    </footer>
+</body>
+</html>

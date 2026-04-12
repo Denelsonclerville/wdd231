@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haiti Organizations Project</title>
-    <meta name="description" content="Explore Haitian organizations and learn how communities are working together for health, education, and the environment.">
+    <title>Haiti Organizations Project - Home</title>
+    <meta name="description" content="Explore Haitian organizations and their impact.">
     <meta name="author" content="Denelson Clerville">
-    <meta property="og:title" content="Haiti Organizations Project">
-    <meta property="og:description" content="A project showcasing Haitian organizations serving local communities with education, health, and environmental programs.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="images/favicon.svg">
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/small.css">
+    <link rel="stylesheet" href="styles/small.css" media="(max-width:767px)">
     <link rel="stylesheet" href="styles/large.css">
-    <script type="module" src="scripts/page.js"></script>
+    <script src="scripts/app.js" defer></script>
+    <script src="scripts/eseye.js" defer></script>
 </head>
 <body class="home-page">
     <header class="site-header">
@@ -23,30 +21,47 @@
         </div>
         <button id="mobile-menu" class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
         <nav aria-label="Primary navigation">
-            <ul>
-                <li><a href="index.html" aria-current="page">Home</a></li>
+            <ul id="primary-nav">
+                <li><a href="index.html" class="active" aria-current="page">Home</a></li>
                 <li><a href="organizations.html">Organizations</a></li>
-                <li><a href="support.html">How to Support</a></li>
-                <li><a href="attributions.html">Attributions</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="page-content">
-        <section class="hero">
-            <div>
-                <p class="eyebrow">Final Project</p>
+        <section class="hero-home">
+            <div class="hero-overlay">
                 <h1>Haiti’s Leading Community Organizations</h1>
-                <p>Explore nine Haitian nonprofit and community organizations working in education, health, environment, and social development.</p>
-                <p lang="ht">Bonjou! Byenvini nan pwojè nou sou òganizasyon kominotè Ayiti ki ap travay pou edikasyon, sante, anviwònman, ak devlopman sosyal.</p>
+                <p>Explore Haitian nonprofit and community organizations working for a better future.</p>
                 <div class="hero-actions">
                     <a class="button button-primary" href="organizations.html">View Organizations</a>
-                    <a class="button button-secondary" href="support.html">Learn How to Help</a>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="images/hero-logo.webp" alt="Illustration of community support" loading="lazy">
+            <img src="images/hero2.webp" alt="Community project illustration" class="eyebrow">
+        </section>
+
+        <section class="home-container">
+            <div class="card events-area">
+                <h3>Upcoming Events</h3>
+                <p>Join our next community meeting on local environmental development.</p>
+                <hr>
             </div>
+
+            <div class="card weather-area">
+                <h3>Current Weather</h3>
+                <div class="weather-content"></div>
+            </div>
+
+            <div class="card forecast-area">
+                <h3>3-Day Forecast</h3>
+                <div id="forecast-list" class="forecast-container"></div>
+            </div>
+        </section>
+
+        <section class="featured-section">
+            <h2>Featured Organizations</h2>
+            <div id="featured-orgs-container" class="org-grid"></div>
         </section>
 
         <section class="intro-cards">
@@ -66,9 +81,26 @@
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2026 Haiti Organizations Project</p>
-        <p><a href="#" class="footer-video-link">Project demo video (5 minutes, screen + face recording)</a></p>
-        <p><a href="attributions.html">Attributions</a></p>
+        <div class="footer-info">
+            <p><strong>Haiti Organizations Project</strong></p>
+            <p>Port-au-Prince, Haiti</p>
+            <p>WDD 231 Final Project</p>
+        </div>
+
+        <div class="footer-social">
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-legal">
+            <img class="video" src="images/video-icon.png" alt="video icon">
+            <p><a href="#" class="footer-video-link">Project demo video</a></p>
+            <p>&copy; <span id="year"></span> | Denelson Clerville</p>
+            <p>Last Modified: <span id="lastModified"></span></p>
+        </div>
     </footer>
 </body>
 </html>

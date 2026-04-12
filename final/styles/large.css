@@ -1,40 +1,288 @@
-@media (min-width: 721px) {
+@media (min-width: 768px) {
+    .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem 5%;
+        background: var(--surface);
+        border-bottom: 3px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 20;
+    }
+
+    .page-brand a {
+        text-decoration: none;
+        font-weight: 700;
+        color: var(--primary-strong);
+        font-size: 1.2rem;
+    }
+
+    nav {
+        display: block;
+        position: static;
+        width: auto;
+        height: auto;
+        background: none;
+        box-shadow: none;
+    }
+
     nav ul {
         display: flex;
-        flex-direction: row;
-        gap: 1rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        gap: 0.75rem;
+    }
+
+    nav a {
+        color: var(--text);
+        text-decoration: none;
+        padding: 0.75rem 1rem;
+        border-radius: 999px;
+        display: inline-block;
+        transition: background 0.3s;
+    }
+
+    nav a[aria-current="page"] {
+        color: #3397e9;
+        text-decoration: underline;
+        text-decoration-color: #3397e9;
+        text-decoration-thickness: 2px;
     }
 
     .menu-toggle {
         display: none;
     }
 
-    .hero {
-        grid-template-columns: 1.2fr 0.8fr;
-        align-items: center;
-    }
-
-    .hero-actions,
-    .callout-actions,
-    .org-card-actions {
-        align-items: center;
-    }
-
-    .intro-cards {
-        grid-template-columns: repeat(3, minmax(220px, 1fr));
-    }
-
-    .support-grid {
-        grid-template-columns: repeat(2, minmax(220px, 1fr));
-    }
-
-    .organization-grid {
-        grid-template-columns: repeat(3, minmax(250px, 1fr));
-    }
-}
-
-@media (min-width: 900px) {
     .page-content {
-        max-width: 1120px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 5rem 1.5rem 1.5rem;
+    }
+
+    .hero-home {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background: linear-gradient(to left, rgba(82, 68, 68, 0.9) 30%, transparent), 
+                    url('../images/hero-logo.webp') no-repeat center center;
+        background-size: cover;
+        min-height: 450px;
+        width: 100%;
+        margin: -30px 2px 5%;
+        padding: 0 5%;
+        color: #ffffff;
+        overflow: hidden;
+    }
+
+    .hero-overlay {
+        z-index: 10;
+        max-width: 600px;
+    }
+
+    .eyebrow {
+        display: block;
+        position: absolute;
+        border-radius: 50%;
+        border: none;
+        width: 300px;
+        height: auto;
+        top: 50%;
+        transform: translateY(-50%);
+        filter: drop-shadow(2px 4px 6px rgba(224, 210, 210, 0.5));
+        animation: slideToRight 2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    }
+
+    @keyframes slideToRight {
+        0% { right: -450px; opacity: 0; }
+        100% { right: 1%; opacity: 1; }
+    }
+
+    .hero-home h1 {
+        margin: 0;
+        font-size: clamp(2.5rem, 6vw, 3.5rem);
+        line-height: 1.1;
+        color: #ffffff;
+    }
+
+    .hero-home p {
+        color: #e0e0e0;
+        font-size: 1.2rem;
+        margin: 1rem 0 2rem 0;
+    }
+
+    .hero-actions, .callout-actions, .org-card-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: flex-start;
+    }
+
+    .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0.95rem 1.4rem;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 600;
+        width: auto;
+        transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button-primary {
+        background: var(--primary);
+        color: #fff;
+    }
+
+    .button-secondary {
+        background: #fff;
+        color: var(--primary-strong);
+        border: 1px solid var(--primary-strong);
+    }
+
+    .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .home-container, .intro-cards, .org-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 20px auto;
+        align-items: stretch;
+    }
+
+    .home-container {
+        grid-template-areas: "events weather forecast";
+    }
+
+    .events-area { grid-area: events; }
+    .weather-area { grid-area: weather; }
+    .forecast-area { grid-area: forecast; }
+
+    .card, .intro-cards article {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        border-top: 6px solid var(--primary);
+        height: 100%;
+        max-width: none;
+    }
+
+    .weather-main {
+        background: #f4f4f4;
+        padding: 15px;
+    }
+
+    .temp-big {
+        font-size: 3rem;
+    }
+
+    .organization-card {
+        background: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        min-height: 380px;
+    }
+
+    .card-middle {
+        display: flex;
+        gap: 15px;
+        text-align: left;
+    }
+
+    .small-thumb {
+        width: 80px;
+        height: 80px;
+    }
+
+    .directory-header {
+        background-color: #0b5d56;
+        color: white;
+        padding: 50px 5%;
+        border-radius: 15px;
+        margin: 20px auto;
+        max-width: 1200px;
+    }
+
+    .filter-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 15px 25px;
+        border-radius: 10px;
+    }
+
+    .filter-controls {
+        display: flex;
+        grid-template-columns: none;
+        gap: 12px;
+    }
+
+    #org-count-display {
+        margin-left: auto;
+        background: #07453f;
+        padding: 5px 15px;
+        border-radius: 20px;
+    }
+
+    .org-slideshow-container {
+        padding: 50px 5%;
+    }
+
+    .slides-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .contact-layout {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 40px;
+        margin-top: 40px;
+    }
+
+    .site-footer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        align-items: center;
+        text-align: center;
+        padding: 3rem 5%;
+        background-color: #f0f4f3;
+        border-top: 1px solid #ddd;
+    }
+
+    .social-icons a i {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #0b5d56;
+        color: white;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        transition: transform 0.3s ease;
+    }
+
+    .social-icons a i:hover {
+        transform: scale(1.1);
+        background-color: #07453f;
     }
 }
