@@ -1,6 +1,6 @@
 :root {
     --bg: #f9fafb;
-    --surface: #ffffff;
+    --surface: #121212;
     --primary: #0b5d56;
     --primary-strong: #07453f;
     --accent: #f7b267;
@@ -72,7 +72,7 @@ nav {
     background-color: rgba(255, 255, 255, 0.95);
     box-shadow: -5px 0 15px rgba(0,0,0,0.1);
 }
-nav a:hover{text-decoration: underline;text-decoration-color: #3397e9;}
+nav a:hover{text-decoration: underline;text-decoration-color: #7d85f5;}
 nav.open {
     display: block;
     animation: slideIn 0.3s ease-out;
@@ -99,9 +99,8 @@ nav.open {
     transition: color 0.3s;
 }
 
-#primary-nav a.active {
-    color: #007bff;
-    border-bottom: 2px solid #007bff;
+nav a[aria-current="page"] {
+    border-bottom: 2px solid #7d85f5;
 }
 
 @keyframes slideIn {
@@ -122,7 +121,7 @@ nav.open {
     flex-direction: column;
     justify-content: center;
     padding: 2rem 5%;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
                 url('../images/hero-logo.webp') no-repeat center
 }
 
@@ -154,10 +153,6 @@ nav.open {
     transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.button-primary {
-    background: var(--primary);
-    color: #fff;
-}
 
 .home-container {
     display: flex;
@@ -176,7 +171,7 @@ nav.open {
 .card,  .organization-card {
     width: 100%;
     max-width: 400px;
-    background: #ffffff;
+    background: #F4F1DE;
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -304,7 +299,7 @@ nav.open {
 
 .mission-text {
     font-size: 0.95rem;
-    color: var(--muted);
+    color: #3D405B;
     text-align: left;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -315,17 +310,13 @@ nav.open {
     margin-top: 15px;
     width: 100%;
 }
-
+.card-bottom a {font-weight: bold;}
 .details-btn-styled {
-    display: block;
     width: 100%;
     text-align: center;
     padding: 0.8rem;
-    background-color: var(--primary);
-    color: white;
     text-decoration: none;
     border-radius: 8px;
-    font-weight: bold;
 }
 
 .intro-cards article {
@@ -335,7 +326,7 @@ nav.open {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    background: #ffffff;
+    background: var(--primary);
     padding: 25px;
     margin: 0;
 }
@@ -349,11 +340,11 @@ nav.open {
 }
 
 .directory-header {
-    background-color: var(--primary);
-    padding: 3rem 5% 2rem;
+    background-color: var(--surface);
+    padding: 4rem 0 0; width: 90%;
     color: #ffffff;
     text-align: center;
-    margin-top: 60px;
+    margin: 20px 50px 0 20px;
     border-radius: 0 0 20px 20px;
 }
 
@@ -364,17 +355,17 @@ nav.open {
 
 .header-content p {
     font-size: 1rem;
-    color: #e0e0e0;
+    color: white;
     margin-bottom: 2rem;
     line-height: 1.4;
 }
 
 .filter-wrapper {
-    background: #ffffff;
+    background: #f0f0f0;
     padding: 15px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    color: var(--text);
+    color: #3D405B;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -383,7 +374,7 @@ nav.open {
 .filter-label {
     font-weight: bold;
     font-size: 0.9rem;
-    color: var(--muted);
+    color: #222;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -398,18 +389,17 @@ nav.open {
 .filter-btn {
     padding: 10px 5px;
     font-size: 0.85rem;
-    border: 2px solid var(--border);
     background: transparent;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 600;
-    color: var(--primary);
+    color: var(--surface);
 }
 
 .filter-btn.active {
     background-color: var(--primary);
-    color: #ffffff;
+    color: #e0e0e0;
     border-color: var(--primary);
 }
 
@@ -464,10 +454,10 @@ nav.open {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 2rem;
+    gap: 2rem;    color: #121212;
+
     padding: 2rem 5%;
-    background-color: #f0f4f3;
-    border-top: 1px solid #ddd;
+    background-color: #dddd;
     margin-top: 20px;
 }
 
@@ -486,7 +476,7 @@ nav.open {
 }
 
 .social-icons a {
-    color: var(--primary);
+    color: var(--surface);
 }
 
 .footer-legal .video {
@@ -496,8 +486,8 @@ nav.open {
 
 .footer-legal p, .footer-info p {
     margin: 2px 0;
-    font-size: 0.85rem;
-    color: var(--muted);
+    font-size: 1rem; 
+
 }
 
 .contact-layout {
@@ -508,7 +498,6 @@ nav.open {
 }
 
 .org-slideshow-container {
-    background: #f0f4f3;
     padding: 20px 0;
     margin-top: 60px;
     overflow: hidden;
@@ -517,23 +506,24 @@ nav.open {
 #slides-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 2px;
     align-items: center;
     transition: opacity 0.8s ease-in-out;
 }
-
+.slide-item a{ background-color: #121212; color: var(--bg);}
+.slide-item a:hover, input[type="submit"]:hover{background-color: var(--bg); color: #121212;}
 .slide-item {
-    width: 90%;
+    width: 90%; margin: 20px 0 2% 2%;
     max-width: 320px;
-    background: white;
-    padding: 15px;
+    background: #ddd;
+    padding: 10px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    text-align: center;
+    text-align: center;justify-content: center;
 }
 
 .form-section {
-    background: white;
+    background: #f0f4f3;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
@@ -541,9 +531,9 @@ nav.open {
 
 fieldset {
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 legend {
@@ -551,7 +541,7 @@ legend {
     padding: 0 10px;
     color: var(--primary);
 }
-
+.form-section input[type="submit"]{width: 100%; text-align: center;justify-content: center;background-color: white;font-size: 1rem;}
 input[type="text"], input[type="email"], select, textarea {
     width: 100%;
     padding: 12px;
@@ -562,17 +552,10 @@ input[type="text"], input[type="email"], select, textarea {
 .newsletter-form input{margin-bottom: 8px;}
 .newsletter-card {
     background: var(--primary);
-    color: white;
+    color: white; font-size: 1.4rem;
     padding: 25px;
     border-radius: 15px;
     text-align: center;
-}
-
-.button-secondary {
-    background: var(--accent);
-    color: var(--primary-strong);
-    border: none;
-    font-weight: bold;
 }
 
 .fade-in {
