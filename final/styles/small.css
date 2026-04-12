@@ -315,7 +315,6 @@ nav a[aria-current="page"] {
     color: var(--muted);
 }
 
-/* Page-specific styles for differentiation */
 .home-page .hero {
     background: linear-gradient(to right, #002654, #d21034);
     color: white;
