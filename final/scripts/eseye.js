@@ -84,9 +84,6 @@ async function initFeaturedOrgs() {
                         <img src="${org.image}" alt="${org.name}" class="small-thumb">
                     </div>
                 </div>
-                <div class="card-bottom">
-                    <a href="${org.website}" target="_blank" class="details-btn-styled">Visit Site</a>
-                </div>
             </div>`).join('');
     } catch (err) {
         console.error(err);

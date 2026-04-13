@@ -71,7 +71,7 @@ async function initDirectory() {
         render(organizations, false);
 
     } catch (err) {
-        console.error(err);
+        console.error("Error loading organizations:", err);
     }
 }
 
@@ -84,13 +84,22 @@ function createModal() {
     modal.className = "modal hidden";
     modal.innerHTML = `
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
+            <button class="close-modal" aria-label="Close modal">&times;</button>
             <div id="modal-body"></div>
         </div>`;
     document.body.appendChild(modal);
 
-    modal.querySelector(".close-modal").onclick = () => modal.classList.add("hidden");
-    window.onclick = (event) => { if (event.target == modal) modal.classList.add("hidden"); };
+    modal.querySelector(".close-modal").onclick = () => {
+        modal.classList.add("hidden");
+        document.body.style.overflow = "auto";
+    };
+
+    window.onclick = (event) => { 
+        if (event.target == modal) {
+            modal.classList.add("hidden");
+            document.body.style.overflow = "auto";
+        }
+    };
     
     return modal;
 }
@@ -99,24 +108,32 @@ function showModal(org, modal) {
     const body = modal.querySelector("#modal-body");
     body.innerHTML = `
         <div class="modal-header">
-            <img src="${org.image}" alt="${org.name}" style="width: 80px; height: auto; border-radius: 8px;">
+            <img src="${org.image}" alt="${org.name}" class="modal-logo">
             <h2>${org.name}</h2>
+            <p class="modal-category">${org.category}</p>
         </div>
         <div class="modal-grid-info">
-            <p><strong>Category:</strong> ${org.category}</p>
-            <p><strong>Founded:</strong> ${org.founded}</p>
-            <p><strong>Location:</strong> ${org.location}</p>
-            <p><strong>Phone:</strong> ${org.phone}</p>
+            <p><strong>📍 Address:</strong> ${org.address}</p>
+            <p><strong>📍 Location:</strong> ${org.location}</p>
+            <p><strong>📞 Phone:</strong> ${org.phone}</p>
+            <p><strong>📅 Founded:</strong> ${org.founded}</p>
         </div>
-        <hr>
-        <p><strong>Mission:</strong> ${org.mission}</p>
-        <p><strong>Programs:</strong> ${org.programs}</p>
-        <p><strong>Impact:</strong> ${org.impact}</p>
+        <div class="modal-detailed-content">
+            <h3>Mission</h3>
+            <p>${org.mission}</p>
+            
+            <h3>Key Programs</h3>
+            <p>${org.programs}</p>
+            
+            <h3>Community Impact</h3>
+            <p>${org.impact}</p>
+        </div>
         <div class="modal-footer-btn">
-            <a href="${org.website}" target="_blank" class="details-btn-styled">Official Website</a>
+            <a href="${org.website}" target="_blank" class="button button-primary">Visit Official Website</a>
         </div>
     `;
     modal.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
 }
 
 let slideIndex = 0;
@@ -160,7 +177,13 @@ async function initContactPage() {
 
     const contactForm = document.querySelector("#contact-form");
     if (contactForm) {
-        const fields = ["fname", "email", "org-choice", "description"];
+        // --- 1. Konfigirasyon Banner Erè a ---
+        const errorBanner = document.createElement("div");
+        errorBanner.id = "error-banner";
+        errorBanner.style.display = "none";
+        contactForm.prepend(errorBanner);
+
+        const fields = ["fname", "lname", "phone", "email", "org-choice", "description"];
         const timestamp = document.querySelector("#timestamp");
         
         if (timestamp) timestamp.value = new Date().toISOString();
@@ -177,17 +200,40 @@ async function initContactPage() {
             });
         });
 
+        // --- 2. Lojik Submit ak Validasyon ---
         contactForm.addEventListener("submit", (e) => {
-            const nameField = document.getElementById("fname");
-            const namePattern = /^[a-zA-Z\s]{3,}$/;
-            
-            if (!namePattern.test(nameField.value)) {
+            const inputs = contactForm.querySelectorAll("input[required], select[required], textarea[required]");
+            let firstInvalid = null;
+            let hasError = false;
+
+            inputs.forEach(input => {
+                if (!input.checkValidity()) {
+                    if (!hasError) firstInvalid = input;
+                    hasError = true;
+                }
+            });
+
+            if (hasError) {
                 e.preventDefault();
-                alert("Please enter a valid name (at least 3 letters).");
-                return;
+                
+                errorBanner.innerHTML = `
+                    <div style="background:#fee2e2; border:1px solid #f87171; padding:15px; margin-bottom:20px; border-radius:8px; color:#b91c1c;">
+                        <p style="margin:0;">Attention: Some required fields are missing. 
+                        <a href="#" id="go-to-error" style="text-decoration:underline; font-weight:bold; color:#b91c1c;">Click to see where.</a></p>
+                    </div>`;
+                errorBanner.style.display = "block";
+
+                document.getElementById("go-to-error").onclick = (ev) => {
+                    ev.preventDefault();
+                    if (firstInvalid) {
+                        firstInvalid.focus();
+                        firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
+                    }
+                };
+            } else {
+                errorBanner.style.display = "none";
+                fields.forEach(id => localStorage.removeItem(`contact_${id}`));
             }
-            
-            fields.forEach(id => localStorage.removeItem(`contact_${id}`));
         });
     }
 }
@@ -223,4 +269,4 @@ document.addEventListener("DOMContentLoaded", () => {
     setupFooter();
     initDirectory();
     initContactPage();
-})
+});

@@ -36,36 +36,45 @@
 
         <div class="contact-layout">
             <section class="form-section">
-                <h2>Organization Form</h2>
-                <form action="thankyou.html" method="get" id="contact-form">
-                    <fieldset>
-                        <legend>Personal Information</legend>
-                        <label for="fname">Full Name*
-                            <input type="text" name="fname" id="fname" autocomplete="name" placeholder="John Doe" required>
-                        </label>
-                        <label for="email">Email Address*
-                            <input type="email" name="email" id="email" autocomplete="email" placeholder="example@domain.com" required>
-                        </label>
-                    </fieldset>
+    <h2>Organization Form</h2>
+    <form action="thankyou.html" method="get" id="contact-form">
+        <fieldset>
+            <legend>Personal Information</legend>
+            <label for="fname">First Name*
+                <input type="text" name="fname" id="fname" autocomplete="given-name" placeholder="John" required>
+            </label>
+            
+            <label for="lname">Last Name*
+                <input type="text" name="lname" id="lname" autocomplete="family-name" placeholder="Doe" required>
+            </label>
 
-                    <fieldset>
-                        <legend>Message Details</legend>
-                        <label for="org-choice">Interested in:
-                            <select name="org-choice" id="org-choice">
-                                <option value="" disabled selected>Select an organization...</option>
-                                <option value="education">Education Initiatives</option>
-                                <option value="health">Health Services</option>
-                                <option value="development">Sustainable Development</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </label>
-                            <textarea name="description" id="description" rows="5" placeholder="How can we help you?"></textarea>
-                    </fieldset>
+            <label for="phone">Phone Number*
+                <input type="tel" name="phone" id="phone" autocomplete="tel" placeholder="(509) 0000-0000" required>
+            </label>
 
-                    <input type="hidden" name="timestamp" id="timestamp">
-                    <input type="submit" value="Submit" class="button">
-                </form>
-            </section>
+            <label for="email">Email Address*
+                <input type="email" name="email" id="email" autocomplete="email" placeholder="example@domain.com" required>
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Message Details</legend>
+            <label for="org-choice">Interested in:
+                <select name="org-choice" id="org-choice">
+                    <option value="" disabled selected>Select an organization...</option>
+                    <option value="education">Education Initiatives</option>
+                    <option value="health">Health Services</option>
+                    <option value="development">Sustainable Development</option>
+                    <option value="other">Other</option>
+                </select>
+            </label>
+            <textarea name="description" id="description" rows="5" placeholder="How can we help you?"></textarea>
+        </fieldset>
+
+        <input type="hidden" name="timestamp" id="timestamp">
+        <input type="submit" value="Submit" class="button">
+    </form>
+</section>
 
             <aside class="sidebar-contact">
                 <div class="newsletter-card">
