@@ -113,7 +113,7 @@ function showModal(org, modal) {
             <p class="modal-category">${org.category}</p>
         </div>
         <div class="modal-grid-info">
-            <p><strong>📍 Address:</strong> ${org.address}</p>
+            <p><strong> Address:</strong> ${org.address}</p>
             <p><strong>📍 Location:</strong> ${org.location}</p>
             <p><strong>📞 Phone:</strong> ${org.phone}</p>
             <p><strong>📅 Founded:</strong> ${org.founded}</p>
@@ -177,7 +177,6 @@ async function initContactPage() {
 
     const contactForm = document.querySelector("#contact-form");
     if (contactForm) {
-        // --- 1. Konfigirasyon Banner Erè a ---
         const errorBanner = document.createElement("div");
         errorBanner.id = "error-banner";
         errorBanner.style.display = "none";
@@ -200,7 +199,6 @@ async function initContactPage() {
             });
         });
 
-        // --- 2. Lojik Submit ak Validasyon ---
         contactForm.addEventListener("submit", (e) => {
             const inputs = contactForm.querySelectorAll("input[required], select[required], textarea[required]");
             let firstInvalid = null;

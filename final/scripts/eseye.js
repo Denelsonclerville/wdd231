@@ -59,6 +59,7 @@ function renderForecast(fData, container) {
     }).join("");
 }
 
+// --- Pake Featured (Home Page) ---
 async function initFeaturedOrgs() {
     const featuredContainer = document.querySelector("#featured-orgs-container");
     if (!featuredContainer) return;
@@ -110,84 +111,15 @@ function createModal() {
     return modal;
 }
 
-async function initDirectory() {
-    const orgList = document.querySelector("#org-list");
-    const categoryButtons = document.querySelector("#category-buttons");
-    if (!orgList) return;
-
-    const modalElement = createModal();
-
-    try {
-        const response = await fetch('data/organizations.json');
-        const organizations = await response.json();
-        const savedCategory = localStorage.getItem("selectedCategory") || "All";
-
-        const render = (filter) => {
-            const filtered = filter === "All" ? organizations : organizations.filter(o => o.category === filter);
-            orgList.innerHTML = filtered.map(org => `
-                <div class="organization-card">
-                    <div class="card-top">
-                        <h3>${org.name}</h3>
-                        <p class="category-label">${org.category}</p>
-                    </div>
-                    <hr class="card-divider">
-                    <div class="card-middle">
-                        <div class="card-text">
-                            <p class="mission-text">${org.description || "No description available."}</p>
-                        </div>
-                        <div class="card-image-wrapper">
-                            <img src="${org.image}" alt="${org.name}" class="small-thumb">
-                        </div>
-                    </div>
-                    <div class="card-bottom">
-                        <button class="details-btn-styled" data-id="${org.id}">More Details</button>
-                    </div>
-                </div>`).join('');
-
-            document.querySelectorAll(".details-btn-styled").forEach(btn => {
-                btn.onclick = () => {
-                    const org = organizations.find(o => o.id == btn.dataset.id);
-                    if (org) {
-                        document.querySelector("#modal-body").innerHTML = `
-                            <h2>${org.name}</h2>
-                            <p><strong>Mission:</strong> ${org.mission}</p>
-                            <p><strong>Phone:</strong> ${org.phone}</p>
-                            <p><a href="${org.website}" target="_blank">Official Website</a></p>`;
-                        modalElement.classList.remove("hidden");
-                    }
-                };
-            });
-        };
-
-        const categories = ["All", ...new Set(organizations.map(o => o.category))];
-        if (categoryButtons) {
-            categoryButtons.innerHTML = categories.map(cat => 
-                `<button class="filter-btn ${cat === savedCategory ? 'active' : ''}">${cat}</button>`
-            ).join('');
-
-            document.querySelectorAll(".filter-btn").forEach(btn => {
-                btn.onclick = () => {
-                    const cat = btn.textContent;
-                    localStorage.setItem("selectedCategory", cat);
-                    render(cat);
-                    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-                    btn.classList.add("active");
-                };
-            });
-        }
-        render(savedCategory);
-    } catch (err) {
-        console.error(err);
-    }
+function setupFooter() {
+    const yearSpan = document.querySelector("#year");
+    const lastModSpan = document.querySelector("#lastModified");
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+    if (lastModSpan) lastModSpan.textContent = document.lastModified;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     getWeatherData();
     initFeaturedOrgs();
-    initDirectory();
-    
-    const yearSpan = document.querySelector("#year");
-    const lastModSpan = document.querySelector("#lastModified");
-    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-    if (lastModSpan) lastModSpan.textContent = document.lastModified;
+    setupFooter();
 });
