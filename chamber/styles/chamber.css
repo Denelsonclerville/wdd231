@@ -388,4 +388,214 @@ box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 width: 22px;
 height: 22px;
 color: white;
+}.join-grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    padding: 20px;
+    background-color: #fcfcfc;
+}
+
+#chamber-form {
+    width: 100%;
+    max-width: 500px;
+}
+
+#chamber-form fieldset {
+    border: none;
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    background-color: #ddd;
+    box-shadow: 0 15px 35px rgba(51, 112, 235, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#chamber-form fieldset:hover {
+    transform: translateY(-5px);
+}
+
+#chamber-form legend {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #2746b3;
+    padding: 0 10px;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+#chamber-form label {
+    display: block;
+    margin-top: 20px;
+    font-weight: 600;
+    color: #444;
+    font-size: 0.9rem;
+}
+
+#chamber-form input, 
+#chamber-form select, 
+#chamber-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-top: 8px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+#chamber-form input:focus {
+    outline: none;
+    border-color: #2746b3;
+    background-color: #ffffff;
+}
+
+.join-submit {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #2746b3 0%, #1a3080 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(39, 70, 179, 0.3);
+    transition: all 0.3s ease;
+}
+
+.join-submit:hover {
+    box-shadow: 0 15px 25px rgba(39, 70, 179, 0.4);
+    filter: brightness(1.1);
+}
+
+.membership-cards {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.m-card {
+    background-color: #ddd;
+    border-top: 1px solid #0056b3;
+    padding: 10px;
+    border-radius: 18px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideIn 0.6s ease-out forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.m-card:hover, .m-card:active {
+    transform: scale(1.03);
+    background-color: #ffffff;
+    box-shadow: 0 15px 35px rgba(32, 61, 118, 0.15);
+    border-top-color: #2746b3;
+}
+
+.m-card:nth-child(1) { animation-delay: 0.1s; }
+.m-card:nth-child(2) { animation-delay: 0.2s; }
+.m-card:nth-child(3) { animation-delay: 0.3s; }
+.m-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-trigger {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+dialog {
+    border: none;
+    border-radius: 15px;
+    padding: 0;
+    width: 85%;
+    max-width: 350px;
+    margin: auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+dialog[open] {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.modal-content h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.modal-content ul {
+    text-align: left;
+    padding-left: 15px;
+    margin: 15px 0;
+    font-size: 0.95rem;
+}
+
+.close-modal {
+    background-color: #ddd;
+    color: #222;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+#thankyou-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 20px;
+}
+
+.confirmation-card {
+    padding: 40px 20px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 15px 45px rgba(32, 61, 118, 0.12);
+}
+
+.user-data-display {
+    background-color: #f0f4ff;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: left;
+    margin: 25px 0;
+    border-left: 5px solid #2746b3;
 }
