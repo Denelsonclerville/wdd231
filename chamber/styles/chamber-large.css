@@ -97,17 +97,7 @@
         align-items: flex-end;
         padding: 2rem;
     }
-    .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 38%;
-        height: 100%;
-        background: #0d2b57;
-        clip-path: polygon(0 0, 100% 0, 78% 100%, 0% 100%);
-        z-index: 1;
-    }
+    
     .cta {
         position: relative;
         z-index: 2;
@@ -156,6 +146,8 @@
         display: flex;
         flex-direction: column;
         gap: 4px;
+    }.main-temp{
+        font-weight: bold; margin-bottom: 4px; text-align: center;
     }
     .weather-info p {
         margin: 0;
@@ -166,7 +158,7 @@
         font-weight: bold;
     }
     #forecast-list {
-        padding: 15px;
+        padding: 15px; 
     }
     #forecast-list p {
         margin: 18px 0;
@@ -174,14 +166,12 @@
         border-bottom: 1px solid #bbb;
         font-size: 0.95rem;
     }
-    .spotlights {
-        max-width: 1240px;
-        margin: 40px 6%;
-    }
-    .spotlight-container {
+    
+    .spotlights{
+        margin: 30px auto;
+    }.spotlight-container{
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
+        grid-template-columns: 1fr 1fr 1fr;gap: 15px;max-width: 1200px;margin: 0 auto;
     }
     .spotlight-card {
         background-color: #eeeeee;
@@ -443,66 +433,76 @@
     }
 
     .membership-cards {
-        background-color: #f4f6f9;
-        padding: 2rem;
-        border-radius: 8px;
-        border: 1px solid #e2e8f0;
-    }
+    background-color: #f4f6f9;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
 
-    .membership-cards h2 {
-        font-family: "Roboto", sans-serif;
-        color: #003366;
-        margin-top: 0;
-        margin-bottom: 1.5rem;
-        font-size: 1.5rem;
-        border-bottom: 2px solid #003366;
-        padding-bottom: 0.5rem;
-    }
+.membership-cards h2 {
+    font-family: "Roboto", sans-serif;
+    color: #003366;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #003366;
+    padding-bottom: 0.5rem;
+}
 
-    .m-card {
-        background-color: #ffffff;
-        border-left: 4px solid #cccccc;
-        border-radius: 4px;
-        padding: 1.25rem;
-        margin-bottom: 1.25rem;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        transition:
-            transform 0.2s ease,
-            box-shadow 0.2s ease;
-    }
+.m-card {
+    background-color: #ffffff;
+    border-left: 4px solid #cccccc;
+    border-radius: 4px;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    transform: translateY(40px);
+    will-change: transform, opacity;
+    animation: monteDous 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
 
-    .m-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
+.m-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
-    .m-card:nth-of-type(1) {
-        border-left-color: #718096;
-    }
-    .m-card:nth-of-type(2) {
-        border-left-color: #cd7f32;
-    }
-    .m-card:nth-of-type(3) {
-        border-left-color: #c0c0c0;
-    }
-    .m-card:nth-of-type(4) {
-        border-left-color: #ffd700;
-    }
+.m-card:nth-of-type(1) {
+    border-left-color: #718096;
+}
+.m-card:nth-of-type(2) {
+    border-left-color: #cd7f32;
+}
+.m-card:nth-of-type(3) {
+    border-left-color: #c0c0c0;
+}
+.m-card:nth-of-type(4) {
+    border-left-color: #ffd700;
+}
 
-    .m-card h3 {
-        margin: 0 0 0.5rem 0;
-        font-family: "Roboto", sans-serif;
-        color: #333333;
-        font-size: 1.15rem;
-    }
+.m-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-family: "Roboto", sans-serif;
+    color: #333333;
+    font-size: 1.15rem;
+}
 
-    .level-info {
-        font-size: 0.9rem;
-        color: #666666;
-        margin-bottom: 1rem;
-        line-height: 1.4;
-    }
+.level-info {
+    font-size: 0.9rem;
+    color: #666666;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
 
+@keyframes monteDous {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
     .modal-trigger {
         background-color: transparent;
         color: #0055a5;

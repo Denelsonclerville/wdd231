@@ -21,17 +21,12 @@ async function getWeatherData() {
     try {
         const weatherContainer = document.querySelector(".weather-content");
         const forecastContainer = document.querySelector("#forecast-list");
+
         const response = await fetch(weatherUrl);
-
-        if (!weatherContainer) {
-            return;
-        }
-
         if (!response.ok) {
             renderWeatherError("Unable to load current weather at this time.", weatherContainer, forecastContainer);
             return;
         }
-
         const data = await response.json();
 
         const formatTime = (timestamp) => {
@@ -42,68 +37,82 @@ async function getWeatherData() {
         };
 
         const fResponse = await fetch(forecastUrl);
-        let dailyHigh = null;
-        let dailyLow = null;
+        let dailyHigh = Math.round(data.main.temp_max);
+        let dailyLow = Math.round(data.main.temp_min);
+        let daily = [];
 
         if (fResponse.ok) {
             const fData = await fResponse.json();
-            const today = fData.list.filter(item => item.dt_txt.includes("12:00:00"))[0];
 
-            if (today) {
-                dailyHigh = Math.round(today.main.temp_max);
-                dailyLow = Math.round(today.main.temp_min);
+            if (fData.list && fData.list.length > 0) {
+                const todayElements = fData.list.slice(0, 8);
+                let maxTemp = -Infinity;
+                let minTemp = Infinity;
+
+                for (let i = 0; i < todayElements.length; i++) {
+                    const item = todayElements[i];
+                    if (item.main.temp_max > maxTemp) {
+                        maxTemp = item.main.temp_max;
+                    }
+                    if (item.main.temp_min < minTemp) {
+                        minTemp = item.main.temp_min;
+                    }
+                }
+
+                if (maxTemp !== -Infinity) dailyHigh = Math.round(maxTemp);
+                if (minTemp !== Infinity) dailyLow = Math.round(minTemp);
+            }
+
+            daily = fData.list.filter(item => item.dt_txt.includes("12:00:00")).slice(1, 4);
+            if (daily.length === 0 && fData.list.length >= 25) {
+                daily = [fData.list[8], fData.list[16], fData.list[24]];
             }
         }
 
-        weatherContainer.innerHTML = `
-            <div class="weather-layout">
-                <img
-                    id="weather-icon"
-                    src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png"
-                    alt="${data.weather[0].description}"
-                >
-                <div class="weather-info-side">
-                    <p class="main-temp">
-                        <strong>${Math.round(data.main.temp)}°F</strong>
-                    </p>
-                    <p style="text-transform: capitalize;">
-                        ${data.weather[0].description}
-                    </p>
-                    <p>
-                        High: <strong>${dailyHigh !== null ? dailyHigh : Math.round(data.main.temp_max)}°F</strong>
-                    </p>
-                    <p>
-                        Low: <strong>${dailyLow !== null ? dailyLow : Math.round(data.main.temp_min)}°F</strong>
-                    </p>
-                    <p>
-                        Humidity: ${data.main.humidity}%
-                    </p>
-                    <p>
-                        Sunrise: ${formatTime(data.sys.sunrise)}
-                    </p>
-                    <p>
-                        Sunset: ${formatTime(data.sys.sunset)}
-                    </p>
+        if (weatherContainer) {
+            weatherContainer.innerHTML = `
+                <div class="weather-layout">
+                    <img
+                        id="weather-icon"
+                        src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png"
+                        alt="${data.weather[0].description}"
+                    >
+                    <div class="weather-info-side">
+                        <p class="main-temp">
+                            <strong>${Math.round(data.main.temp)}°F</strong>
+                        </p>
+                        <p class="main-temp" style="text-transform: capitalize;">
+                            ${data.weather[0].description}
+                        </p>
+                        <p>
+                            High: <strong>${dailyHigh}°F</strong>
+                        </p>
+                        <p>
+                            Low: <strong>${dailyLow}°F</strong>
+                        </p>
+                        <p>
+                            Humidity:<strong> ${data.main.humidity}%</strong>
+                        </p>
+                        <p>
+                            Sunrise:<strong> ${formatTime(data.sys.sunrise)}</strong>
+                        </p>
+                        <p>
+                            Sunset: <strong>${formatTime(data.sys.sunset)}</strong>
+                        </p>
+                    </div>
                 </div>
-            </div>
-        `;
-
-        if (!fResponse.ok) {
-            if (forecastContainer) {
-                forecastContainer.innerHTML = `<p class="forecast-error">Forecast unavailable.</p>`;
-            }
-            return;
+            `;
         }
-
-        const fData = await fResponse.json();
-        const daily = fData.list.filter(item => item.dt_txt.includes("12:00:00")).slice(1, 4);
 
         if (forecastContainer) {
-            if (daily.length === 0) {
+            if (!fResponse.ok) {
+                forecastContainer.innerHTML = `<p class="forecast-error">Forecast unavailable.</p>`;
+            } else if (daily.length === 0) {
                 forecastContainer.innerHTML = `<p class="forecast-error">No forecast data available.</p>`;
             } else {
                 forecastContainer.innerHTML = daily
                     .map(day => {
+                        if (!day) return '';
                         const date = new Date(day.dt * 1000).toLocaleDateString("en-US", {
                             weekday: "long"
                         });
@@ -116,7 +125,9 @@ async function getWeatherData() {
                     .join("");
             }
         }
+
     } catch (err) {
+        console.error("Erè Weather API:", err);
         const weatherContainer = document.querySelector(".weather-content");
         const forecastContainer = document.querySelector("#forecast-list");
         renderWeatherError("Unable to load weather information.", weatherContainer, forecastContainer);
