@@ -17,17 +17,18 @@ if (menuBtn && navList) {
     });
 
     function setActivePage() {
-        const activePage = window.location.pathname;
+        const activePage = window.location.pathname.split("/").pop();
         const navLinks = document.querySelectorAll(".navigation a");
 
         navLinks.forEach(link => {
             link.classList.remove("active");
             const linkPath = link.getAttribute("href");
-            if ((activePage === "" || activePage === "/" || activePage.includes("index.html")) && 
+
+            if ((activePage === "" || activePage === "index.html" || window.location.pathname === "/") && 
                 (linkPath === "index.html" || linkPath === "/")) {
                 link.classList.add("active");
             } 
-            else if (linkPath !== "#" && linkPath !== "" && activePage.includes(linkPath)) {
+            else if (linkPath && linkPath !== "#" && activePage === linkPath) {
                 link.classList.add("active");
             }
         });

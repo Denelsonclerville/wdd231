@@ -1,9 +1,0 @@
-{
-    "extensions.closeExtensionDetailsOnViewChange": true,
-    "extensions.ignoreRecommendations": false,
-    "prettier.printWidth": 150,
-    "prettier.tabWidth": 4,
-    "liveServer.settings.CustomBrowser": "chrome",
-    "liveServer.settings.useLocalIp": true,
-    "liveServer.settings.port": 5005
-}

@@ -238,6 +238,48 @@ function setupViewButtons(businessContainer) {
     }
 }
 
+function populateThankyouDetails() {
+    const resultsContainer = document.querySelector("#results");
+    if (!resultsContainer) return;
+
+    const params = new URLSearchParams(window.location.search);
+    if (!params.toString()) {
+        resultsContainer.innerHTML = `<p class="error">No application details were provided. Please return to the membership form and submit again.</p>`;
+        return;
+    }
+
+    const summaryItems = [
+        { label: 'Full Name', value: `${params.get('fname') || ''} ${params.get('lname') || ''}`.trim() },
+        { label: 'Organization', value: params.get('organization') || 'Not provided' },
+        { label: 'Title', value: params.get('title') || 'Not provided' },
+        { label: 'Membership Level', value: params.get('level') || 'Not provided' },
+        { label: 'Email', value: params.get('email') || 'Not provided' },
+        { label: 'Phone', value: params.get('phone') || 'Not provided' },
+        { label: 'Submitted', value: params.get('timestamp') ? new Date(params.get('timestamp')).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' }) : 'Not available' }
+    ];
+
+    const detailHtml = summaryItems
+        .filter(item => item.value)
+        .map(item => `
+            <div class="summary-item">
+                <dt>${item.label}</dt>
+                <dd>${item.value}</dd>
+            </div>
+        `)
+        .join('');
+
+    resultsContainer.innerHTML = `<dl class="summary-grid">${detailHtml}</dl>`;
+}
+
+function syncHeroHeight() {
+    const hero = document.querySelector('.hero');
+    const target = document.querySelector('.home-container');
+    if (!hero || !target) return;
+    hero.style.height = 'auto';
+    const height = target.getBoundingClientRect().height;
+    hero.style.height = `${height}px`;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     getWeatherData();
     getMembersData();
@@ -247,28 +289,13 @@ document.addEventListener("DOMContentLoaded", () => {
         timestampField.value = new Date().toISOString();
     }
 
-    const modalTriggers = document.querySelectorAll('.modal-trigger');
-    const closeButtons = document.querySelectorAll('.close-modal');
-    const dialogs = document.querySelectorAll('dialog');
+    populateThankyouDetails();
 
-    modalTriggers.forEach(trigger => {
-        trigger.addEventListener('click', (event) => {
-            event.preventDefault();
-            const modalId = trigger.getAttribute('data-modal');
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                if (typeof modal.showModal === 'function') {
-                    modal.showModal();
-                } else {
-                    modal.setAttribute('open', '');
-                }
-                trigger.setAttribute('aria-expanded', 'true');
-            }
-        });
-    });
+    const dialogs = document.querySelectorAll("dialog");
+    const closeButtons = document.querySelectorAll(".close-modal");
 
     closeButtons.forEach(button => {
-        button.addEventListener('click', () => {
+        button.addEventListener("click", () => {
             const modal = button.closest('dialog');
             if (modal) {
                 modal.close();
@@ -298,5 +325,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         }
+    });
+
+    syncHeroHeight();
+    window.addEventListener('load', syncHeroHeight);
+    window.addEventListener('resize', () => {
+        clearTimeout(window._syncHeroTimer);
+        window._syncHeroTimer = setTimeout(syncHeroHeight, 120);
     });
 });

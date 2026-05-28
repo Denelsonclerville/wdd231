@@ -12,13 +12,11 @@
           <meta property="og:image" content="https://example.com/images/logo.webp">
           <meta name="twitter:title" content="Pétion-Ville Chamber Directory">
           <meta name="twitter:image" content="https://example.com/images/logo.webp">
-          <link rel="icon" href="favicon.ico" type="image/x-icon">
+          <link rel="icon" href="images/logo.webp" type="image/webp">
           <link rel="preconnect" href="https://fonts.googleapis.com">
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
           <link rel="stylesheet"href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
-          <link rel="stylesheet" href="styles/normalize.css">
-          <link rel="stylesheet" href="styles/chamber.css" media="(max-width: 767px)">
-          <link rel="stylesheet" href="styles/chamber-large.css">
+          <link rel="stylesheet" href="styles/chamber.css">
           <script src="scripts/chamber.js" defer></script>
           <script src="scripts/chamber-navigation.js" defer></script>
      </head>
@@ -45,18 +43,23 @@
         </header>
 
         <main id="thankyou-main">
-        <section class="confirmation-card">
-            <h1>Thank You!</h1>
-            <p>We have received your membership application for the Pétion-Ville Chamber of Commerce.</p>
-            
-            <div id="results" class="user-data-display">
-                <p>Retrieving your application details...</p>
-            </div>
+            <section class="confirmation-card">
+                <div class="thankyou-badge">Membership Application Received</div>
+                <h1>Thank You!</h1>
+                <p class="lead">Your application is successfully submitted. One of our chamber representatives will contact you soon.</p>
 
-            <p class="next-steps">Our representative will contact you shortly to finalize your membership.</p>
-            <a href="index.html" class="cta-back">Back to Home</a>
-        </section>
-    </main>
+                <div id="results" class="user-data-display">
+                    <p>Loading your application details...</p>
+                </div>
+
+                <p class="next-steps">If you need to make changes, you can submit another application or contact us directly.</p>
+
+                <div class="thankyou-actions">
+                    <a href="index.html" class="button cta-back">Back to Home</a>
+                    <a href="join.html" class="button secondary">Submit Another Application</a>
+                </div>
+            </section>
+        </main>
 
 
         <footer>
