@@ -399,10 +399,8 @@ body {
   border-left: 8px solid var(--border-gray-ddd);
 }
 
-/* Page title and main layout styles: responsive for small and large screens */
 main {
-  max-width: 1100px;
-  margin: 20px auto;
+  margin: 10px auto;
   padding: 20px;
   text-align: left;
 }
@@ -418,7 +416,7 @@ main {
 @media screen and (max-width: 767px) {
   main {
     padding: 12px;
-    margin: 80px 10px 20px; /* leave space for fixed header on small screens */
+    margin: 80px 10px 20px; 
   }
 
   .page-title {
