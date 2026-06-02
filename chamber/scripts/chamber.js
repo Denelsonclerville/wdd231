@@ -248,21 +248,37 @@ function populateThankyouDetails() {
         return;
     }
 
+    let dateDisplay = "Not available";
+    const timestampParam = params.get('timestamp');
+    if (timestampParam) {
+        try {
+            const decodedTimestamp = decodeURIComponent(timestampParam);
+            const parsedDate = new Date(decodedTimestamp);
+            if (!isNaN(parsedDate.getTime())) {
+                dateDisplay = parsedDate.toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' });
+            } else {
+                dateDisplay = decodedTimestamp;
+            }
+        } catch (e) {
+            dateDisplay = timestampParam;
+        }
+    }
+
     const summaryItems = [
-        { label: 'Full Name', value: `${params.get('fname') || ''} ${params.get('lname') || ''}`.trim() },
-        { label: 'Organization', value: params.get('organization') || 'Not provided' },
-        { label: 'Title', value: params.get('title') || 'Not provided' },
+        { label: 'First Name', value: params.get('fname') || 'Not provided' },
+        { label: 'Last Name', value: params.get('lname') || 'Not provided' },
+        { label: 'Organization/Business Name', value: params.get('organization') || 'Not provided' },
+        { label: 'Organizational Title', value: params.get('title') || 'Not provided' },
         { label: 'Membership Level', value: params.get('level') || 'Not provided' },
-        { label: 'Email', value: params.get('email') || 'Not provided' },
-        { label: 'Phone', value: params.get('phone') || 'Not provided' },
-        { label: 'Submitted', value: params.get('timestamp') ? new Date(params.get('timestamp')).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' }) : 'Not available' }
+        { label: 'Email Address', value: params.get('email') || 'Not provided' },
+        { label: 'Mobile Phone', value: params.get('phone') || 'Not provided' },
+        { label: 'Submission Date', value: dateDisplay }
     ];
 
     const detailHtml = summaryItems
-        .filter(item => item.value)
         .map(item => `
             <div class="summary-item">
-                <dt>${item.label}</dt>
+                <dt><strong>${item.label}:</strong></dt>
                 <dd>${item.value}</dd>
             </div>
         `)
@@ -290,6 +306,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     populateThankyouDetails();
+
+    const modalTriggers = document.querySelectorAll(".modal-trigger");
+    modalTriggers.forEach(trigger => {
+        trigger.addEventListener("click", () => {
+            const modalId = trigger.getAttribute("data-modal");
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.showModal();
+                trigger.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
 
     const dialogs = document.querySelectorAll("dialog");
     const closeButtons = document.querySelectorAll(".close-modal");
