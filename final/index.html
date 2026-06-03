@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haiti Organizations Project - Home</title>
+    <meta name="description" content="Explore Haitian organizations and their impact.">
+    <meta name="author" content="Denelson Clerville">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://url-sit-ou-a.com/">
+    <meta property="og:title" content="Haiti Organizations Project">
+    <meta property="og:description" content="Discover the heart of Haitian resilience through the organizations leading the way. Learn more about their daily impact and how grassroots efforts are creating real, lasting change in neighborhoods nationwide.">
+    <meta property="og:image" content="images/hero2.webp">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/small.css" media="(max-width:767px)">
+    <link rel="stylesheet" href="styles/large.css">
+    <script src="scripts/app.js" defer></script>
+    <script src="scripts/eseye.js" defer></script>
+</head>
+<body class="home-page">
+    <header class="site-header">
+        <div class="page-brand">
+            <a href="index.html">Haiti Organizations</a>
+        </div>
+        <button id="mobile-menu" class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+        <nav aria-label="Primary navigation">
+            <ul id="primary-nav">
+                <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+                <li><a href="organizations.html">Organizations</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <section class="hero-home">
+            <div class="hero-overlay">
+                <h1>Haiti Community Organizations</h1>
+                <p>Explore Haitian nonprofit and community organizations working for a better future.</p>
+            </div>
+            <img src="images/hero2.webp" alt="Community project illustration" class="eyebrow">
+        </section>
+
+        <section class="home-container">
+            <div class="card events-area">
+                <h1>Upcoming Events</h1>
+                <p>Join our next community meeting on local environmental development.</p>
+                <hr>
+            </div>
+
+            <div class="card weather-area">
+                <h1>Current Weather</h1>
+                <div class="weather-content"></div>
+            </div>
+
+            <div class="card forecast-area">
+                <h1>3-Forecast</h1>
+                <div id="forecast-list" class="forecast-container"></div>
+            </div>
+        </section>
+
+        <section class="featured-section">
+            <h1>Featured Organisations</h1>
+            <div id="featured-orgs-container" class="org-grid"></div>
+        </section>
+
+        <div class="intro-cards">
+            <article>
+                <h2>Presentation</h2>
+                <p>This project highlights Haitian organizations and their role in strengthening local communities across the country. Pages are written in English so the content is accessible to international visitors.</p>
+            </article>
+            <article>
+                <h2>Organization Directory</h2>
+                <p>All nine organizations are stored in a JSON file and presented dynamically using JavaScript. This makes the content easy to update and maintain.</p>
+            </article>
+            <article>
+                <h2>Support and Resources</h2>
+                <p>The support page explains how people can get involved, donate responsibly, and share information about Haitian organizations.</p>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-info">
+            <p><strong>Haiti Organizations Project</strong></p>
+            <p>Port-au-Prince, Haiti</p>
+            <p>WDD 231 Final Project</p>
+        </div>
+
+        <div class="footer-social">
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-legal">
+            <p><a href="https://drive.google.com/file/d/1DoNa5UYUiKmklRRoBn-ZeB9XZ-B5XRsM/view?usp=sharing" class="footer-video-link" alt="video-project">Project demo video</a></p>
+            <p>&copy; <span id="year"></span> | Denelson Clerville</p>
+            <p>Last Modified: <span id="lastModified"></span></p>
+        </div>
+    </footer>
+</body>
+</html>
