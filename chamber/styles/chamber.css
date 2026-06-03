@@ -12,12 +12,10 @@
   --border-member-2: #cd7f32;
   --border-member-3: #c0c0c0;
   --border-member-4: #ffd700;
-  /* Discover Page Colors */
   --discover-bg: #1a3a52;
   --discover-card-bg: #f0f4f8;
   --discover-text: #1a3a52;
   --discover-accent: #e74c3c;
-  /* Join & Thank You Page Colors */
   --join-primary: #6366f1;
   --join-secondary: #8b5cf6;
   --join-light-bg: #f5f3ff;
@@ -25,7 +23,6 @@
   --thankyou-primary: #10b981;
   --thankyou-secondary: #06b6d4;
   --thankyou-light-bg: #f0fdf4;
-}
 }
 
 * {
@@ -427,7 +424,6 @@ main {
     font-size: 0.8rem;
   }
 
-  /* ========== DIRECTORY PAGE STYLES ========== */
   .directory-header {
     border-bottom: 2px solid var(--bg-active-teal);
     padding: 15px 1%;
@@ -549,7 +545,6 @@ main {
   .list .business-card:nth-child(even) {
     background-color: var(--border-gray-ddd);
   }
-  /* ========== END DIRECTORY PAGE STYLES ========== */
 
   main {
     margin: 10px auto;
@@ -1068,7 +1063,6 @@ dialog[open] {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* ========== END DISCOVER PAGE STYLES (SMALL SCREENS) ========== */
 
 footer {
   background: #222;
@@ -1117,7 +1111,6 @@ footer p {
   filter: brightness(0) invert(0);
 }
 
-/* ========== JOIN PAGE STYLES (SMALL SCREENS) ========== */
 #join-main {
   background: linear-gradient(135deg, var(--join-light-bg) 0%, #ffffff 100%);
   padding: 80px 15px 30px;
@@ -1490,4 +1483,3 @@ dialog {
   transform: translateY(-2px);
 }
 
-/* ========== END JOIN & THANK YOU STYLES (SMALL SCREENS) ========== */

@@ -231,7 +231,6 @@
     text-decoration: underline;
   }
 
-  /* ========== DIRECTORY PAGE STYLES (LARGE SCREENS) ========== */
   main {
     margin-top: 85px;
   }
@@ -408,7 +407,6 @@
     display: none;
   }
 
-  /* ========== END DIRECTORY PAGE STYLES ========== */
 
   .cta:hover {
     background-color: #ddd;
@@ -664,7 +662,6 @@
     }
   }
 
-  /* ========== DISCOVER PAGE STYLES (LARGE SCREENS) ========== */
   #discover-main {
     margin-top: 85px;
     background-color: var(--discover-bg);
@@ -804,7 +801,6 @@
     border: none;
   }
 
-  /* ========== END DISCOVER PAGE STYLES ========== */
 
   #join-main {
     background-color: #ddd;
@@ -935,7 +931,6 @@
     line-height: 1.2;
   }
 
-  /* ========== JOIN PAGE STYLES (LARGE SCREENS) ========== */
   #join-main {
     padding: 100px 2rem 40px;
     background: linear-gradient(135deg, var(--join-light-bg) 0%, #ffffff 100%);
@@ -1082,7 +1077,6 @@
     font-size: 0.95rem;
   }
 
-  /* ========== THANK YOU PAGE STYLES (LARGE SCREENS) ========== */
   #thankyou-main {
     padding: 120px 40px 60px;
     background: linear-gradient(135deg, var(--thankyou-light-bg) 0%, #f0fdf4 50%, #ffffff 100%);
@@ -1158,5 +1152,4 @@
     transform: translateY(-3px);
   }
 
-  /* ========== END JOIN & THANK YOU STYLES (LARGE SCREENS) ========== */
 }
