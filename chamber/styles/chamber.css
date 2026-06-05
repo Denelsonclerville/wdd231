@@ -3,7 +3,6 @@
   --bg-active-teal: #00695c;
   --text-color-dark: #000000;
   --text-color-white: #ffffff;
-  --text-color-dark-blue: #003366;
   --border-gray-ddd: #ddd;
   --border-gray-999: #999;
   --border-teal: #00695c;
@@ -332,29 +331,6 @@ main {
     text-decoration: underline;
   }
 
-  .directory-header {
-    border-bottom: 2px solid var(--bg-active-teal);
-    padding: 0 1%;
-  }
-
-  .view-toggle {
-    display: flex;
-    gap: 10px;
-    text-align: center;
-    justify-content: center;
-    margin-bottom: 15px;
-  }
-
-  .view-toggle button {
-    padding: 10px 18px;
-    font-size: 1rem;
-    cursor: pointer;
-    background-color: #eee;
-    border: 1px solid #333;
-    border-radius: 6px;
-    transition: all 0.25s ease;
-  }
-
   #join-main {
     max-width: 500px;
     margin: 80px auto 20px;
@@ -362,8 +338,12 @@ main {
   }
 
   #join-main .page-title {
-    font-size: 1.8rem;
-    margin-top: 0;
+    color: var(--text-color-dark);
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
   .join-grid-container {
@@ -553,20 +533,11 @@ main {
   }
 
   .page-title {
-    color: var(--text-color-dark-blue);
+    color: var(--text-color-blue);
     font-weight: 700;
     margin: 12px 0 18px;
     line-height: 1.15;
     font-size: 2rem;
-  }
-
-  #join-main .page-title {
-    color: var(--text-color-dark);
-    font-size: 2.2rem;
-    margin-bottom: 30px;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 1px;
   }
 
   .card strong {
@@ -660,9 +631,9 @@ main {
 .membership-cards h2 {
   margin: 0 0 1rem;
   font-size: 1.5rem;
-  color: var(--text-color-dark-blue);
+  color: var(--text-color-blue);
   text-align: left;
-  border-bottom: 2px solid var(--text-color-dark-blue);
+  border-bottom: 2px solid var(--text-color-blue);
   padding-bottom: 0.6rem;
 }
 
@@ -729,9 +700,9 @@ main {
 }
 
 .modal-trigger {
-  background-color: var(--text-color-white);
-  color: var(--border-blue);
-  border: 1px solid #0055a5;
+  background-color: var(--border-blue);
+  color: var(--text-color-white);
+  border: 1px solid #333;
   padding: 12px 22px;
   border-radius: 12px;
   font-weight: 700;
@@ -781,7 +752,7 @@ dialog[open] {
   font-size: 1.2rem;
   margin-bottom: 10px;
   line-height: 1.2;
-  color: var(--text-color-dark-blue);
+  color: var(--text-color-blue);
 }
 
 .modal-content ul {
@@ -828,7 +799,7 @@ dialog[open] {
   padding: 10px 18px;
   border-radius: 999px;
   background-color: var(--bg-hover-teal);
-  color: var(--text-color-dark-blue);
+  color: var(--text-color-blue);
   font-weight: 700;
   font-size: 0.95rem;
   letter-spacing: 0.02em;
@@ -838,7 +809,7 @@ dialog[open] {
   font-size: clamp(2rem, 2.4vw, 2.8rem);
   margin: 0 0 16px;
   letter-spacing: -0.04em;
-  color: var(--text-color-dark-blue);
+  color: var(--text-color-blue);
 }
 
 .confirmation-card .lead {
@@ -914,7 +885,7 @@ dialog[open] {
 
 .button.secondary {
   background-color: transparent;
-  color: var(--text-color-dark-blue);
+  color: var(--text-color-blue);
   border: 1px solid var(--border-blue);
 }
 
@@ -1063,7 +1034,6 @@ dialog[open] {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-
 footer {
   background: #222;
   color: var(--text-color-white);
@@ -1117,22 +1087,6 @@ footer p {
   min-height: calc(100vh - 200px);
 }
 
-.page-title {
-  color: var(--join-primary);
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  text-shadow: 0 2px 4px rgba(99, 102, 241, 0.1);
-}
-
-.join-grid-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 0 10px;
-}
-
 .form-section {
   background: var(--text-color-white);
   border-radius: 12px;
@@ -1141,42 +1095,9 @@ footer p {
   border: 2px solid var(--join-primary);
 }
 
-#chamber-form fieldset {
-  border: 1px solid var(--join-accent);
-  border-radius: 8px;
-  padding: 1.25rem;
-  margin-bottom: 1.5rem;
-  background-color: #f9f7ff;
-}
-
-#chamber-form fieldset:first-of-type {
-  border-left: 4px solid var(--join-primary);
-}
-
-#chamber-form fieldset:last-of-type {
-  border-left: 4px solid var(--join-secondary);
-}
-
-#chamber-form legend {
-  color: var(--join-primary);
-  font-weight: 700;
-  font-size: 1rem;
-  padding: 0 10px;
-}
-
-#chamber-form label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #333;
-  font-weight: 500;
-  font-size: 0.9rem;
-}
-
 #chamber-form input[type="text"],
 #chamber-form input[type="email"],
-#chamber-form input[type="tel"],
-#chamber-form select,
-#chamber-form textarea {
+#chamber-form input[type="tel"] {
   width: 100%;
   padding: 0.75rem;
   margin-bottom: 1rem;
@@ -1188,15 +1109,6 @@ footer p {
   background-color: var(--text-color-white);
   box-sizing: border-box;
   color: #333;
-}
-
-#chamber-form input:focus,
-#chamber-form select:focus,
-#chamber-form textarea:focus {
-  border-color: var(--join-primary);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-  background-color: #fafbff;
 }
 
 #chamber-form textarea {
@@ -1229,83 +1141,6 @@ footer p {
   transform: translateY(0);
 }
 
-.membership-cards {
-  background: var(--text-color-white);
-  border-radius: 12px;
-  padding: 1.5rem 1rem;
-  border: 2px solid var(--join-secondary);
-  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.12);
-}
-
-.membership-cards h2 {
-  color: var(--join-secondary);
-  text-align: center;
-  font-size: 1.3rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 2px solid var(--join-accent);
-  padding-bottom: 1rem;
-}
-
-.m-card {
-  background: linear-gradient(135deg, #f8f6ff 0%, #f3f0ff 100%);
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-left: 4px solid var(--join-accent);
-  box-shadow: 0 3px 8px rgba(99, 102, 241, 0.08);
-  transition: all 0.3s ease;
-}
-
-.m-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 12px rgba(99, 102, 241, 0.15);
-  border-left-color: var(--join-primary);
-}
-
-.m-card h3 {
-  color: var(--join-primary);
-  font-size: 1rem;
-  margin: 0 0 0.5rem 0;
-}
-
-.level-info {
-  color: #555;
-  font-size: 0.85rem;
-  margin-bottom: 0.75rem;
-  line-height: 1.4;
-}
-
-.modal-trigger {
-  background-color: transparent;
-  color: var(--join-primary);
-  border: 2px solid var(--join-primary);
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100%;
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-}
-
-.modal-trigger:hover {
-  background-color: var(--join-primary);
-  color: var(--text-color-white);
-  transform: translateY(-2px);
-}
-
-/* Dialog/Modal Styles */
-dialog {
-  border: none;
-  border-radius: 12px;
-  padding: 0;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  max-width: 90%;
-  animation: slideIn 0.3s ease;
-}
-
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -1315,64 +1150,6 @@ dialog {
     opacity: 1;
     transform: scale(1);
   }
-}
-
-.modal-content {
-  background: var(--text-color-white);
-  padding: 2rem;
-  border-top: 4px solid var(--join-primary);
-}
-
-.modal-content h2 {
-  color: var(--join-primary);
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-
-.modal-content ul {
-  list-style-position: inside;
-  color: #555;
-  line-height: 1.8;
-}
-
-.close-modal {
-  background: var(--join-primary);
-  color: var(--text-color-white);
-  border: none;
-  padding: 0.7rem 1.5rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  margin-top: 1.5rem;
-  transition: all 0.3s ease;
-  width: 100%;
-  text-transform: uppercase;
-}
-
-.close-modal:hover {
-  background: var(--join-secondary);
-  transform: translateY(-2px);
-}
-
-/* ========== THANK YOU PAGE STYLES (SMALL SCREENS) ========== */
-#thankyou-main {
-  background: linear-gradient(135deg, var(--thankyou-light-bg) 0%, #f0fdf4 50%, #ffffff 100%);
-  padding: 100px 20px 30px;
-  min-height: calc(100vh - 200px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.confirmation-card {
-  background: var(--text-color-white);
-  border-radius: 16px;
-  padding: 2rem 1.5rem;
-  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15);
-  border: 3px solid var(--thankyou-primary);
-  max-width: 100%;
-  text-align: center;
-  animation: popIn 0.5s ease-out;
 }
 
 @keyframes popIn {
@@ -1386,78 +1163,11 @@ dialog {
   }
 }
 
-.thankyou-badge {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--thankyou-primary) 0%, var(--thankyou-secondary) 100%);
-  color: var(--text-color-white);
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  font-weight: 700;
-  font-size: 0.85rem;
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-}
-
-.confirmation-card h1 {
-  color: var(--thankyou-primary);
-  font-size: 2rem;
-  margin: 0 0 1rem;
-  font-weight: 700;
-}
-
-.confirmation-card .lead {
-  color: #555;
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-  font-weight: 500;
-}
-
-.user-data-display {
-  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
-  padding: 1.5rem;
-  border-radius: 10px;
-  margin: 1.5rem 0;
-  text-align: left;
-  border-left: 4px solid var(--thankyou-primary);
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08);
-}
-
-.user-data-display p {
-  color: #333;
-  margin: 0.75rem 0;
-  line-height: 1.6;
-}
-
 .next-steps {
   color: #666;
   font-size: 0.95rem;
   margin: 1.5rem 0;
   line-height: 1.5;
-}
-
-.thankyou-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.button {
-  display: inline-block;
-  padding: 0.9rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: none;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-size: 0.9rem;
 }
 
 .cta-back {
@@ -1470,16 +1180,3 @@ dialog {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
 }
-
-.button.secondary {
-  background: #f0f0f0;
-  color: var(--thankyou-primary);
-  border: 2px solid var(--thankyou-primary);
-}
-
-.button.secondary:hover {
-  background: var(--thankyou-primary);
-  color: var(--text-color-white);
-  transform: translateY(-2px);
-}
-

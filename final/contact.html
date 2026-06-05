@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haiti Organizations Project - Home</title>
@@ -13,108 +13,101 @@
     <meta property="og:title" content="Haiti Organizations Project">
     <meta property="og:description" content="We’re here to help you connect with the heart of Haiti’s community work. Whether you have questions or want to learn more about these impactful organizations, we’d love to hear from you and start a conversation.">
     <meta property="og:image" content="images/hero2.webp">
-    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="logo.webp" type="image/webp">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/small.css" media="(max-width:767px)">
     <link rel="stylesheet" href="styles/large.css">
     <script src="scripts/app.js" defer></script>
     <script src="scripts/eseye.js" defer></script>
-</head>
-<body class="contact-page">
+  </head>
+  <body class="contact-page">
     <header class="site-header">
-        <div class="page-brand">
-            <a href="index.html">Haiti Organizations</a>
-        </div>
-        <button id="mobile-menu" class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
-        <nav aria-label="Primary navigation">
-            <ul id="primary-nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="organizations.html">Organizations</a></li>
-                <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
-            </ul>
-        </nav>
+      <div class="page-brand">
+        <a href="index.html">Haiti Organizations</a>
+      </div>
+      <button id="mobile-menu" class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        ☰
+      </button>
+      <nav aria-label="Primary navigation">
+        <ul id="primary-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="organization.html">Organizations</a></li>
+          <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
     </header>
-
     <main class="page-content">
-        <div class="org-slideshow-container">
-            <div id="slides-wrapper" class="slides-grid"></div>
-        </div>
-
-        <div class="contact-layout">
-            <section class="form-section">
-    <h1>Organization Form</h1>
-    <form action="thankyou.html" method="get" id="contact-form">
-        <fieldset>
-            <legend>Personal Information</legend>
-            <label for="fname">First Name*
+      <div class="org-slideshow-container">
+        <div id="slides-wrapper" class="slides-grid"></div>
+      </div>
+      <div class="contact-layout">
+        <section class="form-section">
+          <h1>Organization Form</h1>
+          <form action="thankyou.html" method="get" id="contact-form">
+            <fieldset>
+              <legend>Personal Information</legend>
+              <label for="fname">First Name*
                 <input type="text" name="fname" id="fname" autocomplete="given-name" placeholder="John" required>
-            </label>
-
-            <label for="lname">Last Name*
+              </label>
+              <label for="lname">Last Name*
                 <input type="text" name="lname" id="lname" autocomplete="family-name" placeholder="Doe" required>
-            </label>
-
-            <label for="phone">Phone Number*
+              </label>
+              <label for="phone">Phone Number*
                 <input type="tel" name="phone" id="phone" autocomplete="tel" placeholder="(509) 0000-0000" required>
-            </label>
-
-            <label for="email">Email Address*
+              </label>
+              <label for="email">Email Address*
                 <input type="email" name="email" id="email" autocomplete="email" placeholder="example@domain.com" required>
-            </label>
-        </fieldset>
-
-        <fieldset>
-            <legend>Message Details</legend>
-            <label for="org-choice">Interested in:
+              </label>
+            </fieldset>
+            <fieldset>
+              <legend>Message Details</legend>
+              <label for="org-choice">Interested in:
                 <select name="org-choice" id="org-choice">
-                    <option value="" disabled selected>Select an organization...</option>
-                    <option value="education">Education Initiatives</option>
-                    <option value="health">Health Services</option>
-                    <option value="development">Sustainable Development</option>
-                    <option value="other">Other</option>
+                  <option value="" disabled selected>Select an organization...</option>
+                  <option value="education">Education Initiatives</option>
+                  <option value="health">Health Services</option>
+                  <option value="development">Sustainable Development</option>
+                  <option value="other">Other</option>
                 </select>
-            </label>
-            <textarea name="description" id="description" rows="5" placeholder="How can we help you?"></textarea>
-        </fieldset>
-
-        <input type="hidden" name="timestamp" id="timestamp">
-        <input type="submit" value="Submit" class="button">
-    </form>
-</section>
-
-            <aside class="sidebar-contact">
-                <div class="newsletter-card">
-                    <h1>Stay Connected</h1>
-                    <p>Subscribe to our newsletter for monthly updates on community projects in Haiti.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Your email address" aria-label="Email for newsletter" required>
-                        <button type="submit" class="button">Subscribe</button>
-                    </form>
-                </div>
-            </aside>
-        </div>
+              </label>
+              <label for="description">Message:
+                <textarea name="description" id="description" rows="5" placeholder="How can we help you?"></textarea>
+              </label>
+            </fieldset>
+            <input type="hidden" name="timestamp" id="timestamp">
+            <input type="submit" value="Submit" class="button">
+          </form>
+        </section>
+        <aside class="sidebar-contact">
+          <div class="newsletter-card">
+            <h2>Stay Connected</h2>
+            <p>Subscribe to our newsletter for monthly updates on community projects in Haiti.</p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Your email address" aria-label="Email for newsletter" required>
+              <button type="submit" class="button">Subscribe</button>
+            </form>
+          </div>
+        </aside>
+      </div>
     </main>
-
     <footer class="site-footer">
-        <div class="footer-info">
-            <p><strong>Haiti Organizations Project</strong></p>
-            <p>Port-au-Prince, Haiti</p>
-            <p>WDD 231 Final Project</p>
+      <div class="footer-info">
+        <p><strong>Haiti Organizations Project</strong></p>
+        <p>Port-au-Prince, Haiti</p>
+        <p>WDD 231 Final Project</p>
+      </div>
+      <div class="footer-social">
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
         </div>
-
-        <div class="footer-social">
-            <div class="social-icons">
-                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-        </div>
-
-        <div class="footer-legal">
-            <p>&copy; <span id="year"></span> | Denelson Clerville</p>
-            <p>Last Modified: <span id="lastModified"></span></p>
-        </div>
+      </div>
+      <div class="footer-legal">
+        <p>&copy; <span id="year"></span> | Denelson Clerville</p>
+        <p>Last Modified: <span id="lastModified"></span></p>
+      </div>
     </footer>
-</body>
+  </body>
 </html>

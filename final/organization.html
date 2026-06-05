@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haiti Organizations Project - Home</title>
@@ -13,67 +13,64 @@
     <meta property="og:title" content="Haiti Organizations Project">
     <meta property="og:description" content="Come see the incredible hands-on work happening across Haiti. Explore how these dedicated groups are transforming lives through education, healthcare, and sustainable projects built for a brighter future.">
     <meta property="og:image" content="images/hero2.webp">
-    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="logo.webp" type="image/webp">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/small.css" media="(max-width:767px)">
     <link rel="stylesheet" href="styles/large.css">
     <script src="scripts/app.js" defer></script>
     <script src="scripts/eseye.js" defer></script>
-</head>
-<body class="organizations-page">
+  </head>
+  <body class="organizations-page">
     <header class="site-header">
-        <div class="page-brand">
-            <a href="index.html">Haiti Organizations</a>
-        </div>
-        <button id="mobile-menu" class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
-        <nav aria-label="Primary navigation">
-            <ul id="primary-nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="organizations.html" class="active" aria-current="page">Organizations</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+      <div class="page-brand">
+        <a href="index.html">Haiti Organizations</a>
+      </div>
+      <button id="mobile-menu" class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        ☰
+      </button>
+      <nav aria-label="Primary navigation">
+        <ul id="primary-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="organization.html" class="active" aria-current="page">Organizations</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </header>
-
     <main class="page-content">
-        <section class="directory-header">
-            <div class="header-content">
-                <h1>Organization Directory</h1>
-                <p>Discover Haitian organizations and international partners operating in health, education, and disaster relief.</p>
-                <div class="filter-wrapper">
-                    <span class="filter-label">Sort by:</span>
-                    <div class="filter-controls">
-                        <button id="filter-all" class="filter-btn active">All</button>
-                        <button id="filter-new" class="filter-btn">Newest</button>
-                        <button id="filter-old" class="filter-btn">Oldest</button>
-                    </div>
-                </div>
+      <section class="directory-header">
+        <div class="header-content">
+          <h1>Organization Directory</h1>
+          <p>Discover Haitian organizations and international partners operating in health, education, and disaster relief.</p>
+          <div class="filter-wrapper">
+            <span class="filter-label">Sort by:</span>
+            <div class="filter-controls">
+              <button id="filter-all" class="filter-btn active">All</button>
+              <button id="filter-new" class="filter-btn">Newest</button>
+              <button id="filter-old" class="filter-btn">Oldest</button>
             </div>
-        </section>
-
-        <div id="org-list" class="org-grid" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+      <div id="org-list" class="org-grid" aria-live="polite"></div>
     </main>
-
     <footer class="site-footer">
-        <div class="footer-info">
-            <p><strong>Haiti Organizations Project</strong></p>
-            <p>Port-au-Prince, Haiti</p>
-            <p>WDD 231 Final Project</p>
+      <div class="footer-info">
+        <p><strong>Haiti Organizations Project</strong></p>
+        <p>Port-au-Prince, Haiti</p>
+        <p>WDD 231 Final Project</p>
+      </div>
+      <div class="footer-social">
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
         </div>
-
-        <div class="footer-social">
-            <div class="social-icons">
-                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-        </div>
-
-        <div class="footer-legal">
-            <p>&copy; <span id="year"></span> | Denelson Clerville</p>
-            <p>Last Modified: <span id="lastModified"></span></p>
-        </div>
+      </div>
+      <div class="footer-legal">
+        <p>&copy; <span id="year"></span> | Denelson Clerville</p>
+        <p>Last Modified: <span id="lastModified"></span></p>
+      </div>
     </footer>
-</body>
+  </body>
 </html>
