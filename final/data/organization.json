@@ -80,7 +80,7 @@
     "programs": "Housing construction, agricultural support, and food distribution.",
     "impact": "Built thousands of homes and distributed essential resources across Haiti.",
     "website": "https://foodforthepoor.org",
-    "image": "images/food-poor-logo.webp",
+    "image": "images/hope-for-haiti.webp",
     "description": "One of the largest relief organizations in Haiti, focusing on infrastructure, food supply, and housing."
   },
   {
@@ -108,7 +108,7 @@
     "programs": "Outpatient clinics, sustainable agriculture, and child nutrition support.",
     "impact": "Served tens of thousands of patients with lifesaving medical and nutrition aid in Grand'Anse.",
     "website": "https://haitianhealthfoundation.org/",
-    "image": "images/hhf-logo.webp",
+    "image": "images/digicel-logo.webp",
     "description": "Provides rural healthcare, nutrition, and economic support for families in Haiti."
   },
   {
@@ -122,11 +122,11 @@
     "programs": "EcoSan toilets, composting facilities, and agricultural research.",
     "impact": "Provided safe, dignified sanitation to thousands and produced metric tons of organic compost.",
     "website": "https://www.oursoil.org/",
-    "image": "images/soil-logo.webp",
+    "image": "images/haiti-live.webp",
     "description": "Promotes public sanitation and ecological restoration through household composting toilets."
   },
   {
-    "name": "CARE Haiti",
+    "name": "Alliad",
     "category": "Humanitarian",
     "location": "Port-au-Prince",
     "address": "Rue des Miracles, Port-au-Prince",
@@ -136,11 +136,11 @@
     "programs": "Emergency relief, women's economic empowerment, and food security.",
     "impact": "Supported thousands of families through emergency cash and resilience projects.",
     "website": "https://www.care.org/",
-    "image": "images/care-logo.webp",
+    "image": "images/alliad-logo.webp",
     "description": "Provides humanitarian aid and long-term development programs across the territory."
   },
   {
-    "name": "Project HOPE Haiti",
+    "name": "Haiti Live",
     "category": "Health",
     "location": "Gonaïves",
     "address": "Rue Nationale, Gonaïves",
@@ -150,7 +150,7 @@
     "programs": "Training for clinicians, medical supply distribution, and public health campaigns.",
     "impact": "Trained dozens of local clinicians and improved community emergency response capacity.",
     "website": "https://www.projecthope.org/",
-    "image": "images/project-hope-logo.webp",
+    "image": "images/haiti-live.webp",
     "description": "Works with local partners to strengthen health systems and emergency care."
   },
   {
@@ -164,11 +164,11 @@
     "programs": "School infrastructure, clean water access, and economic development.",
     "impact": "Supported over 400,000 people annually through healthcare and educational support.",
     "website": "https://hopeforhaiti.com",
-    "image": "images/hope-for-haiti-logo.webp",
+    "image": "images/hope-for-haiti.webp",
     "description": "Focuses on micro-grants, infrastructure, and public resources in southern Haiti."
   },
   {
-    "name": "Sadhana Forest Haiti",
+    "name": "Sadhana Haiti",
     "category": "Environment",
     "location": "Anse-à-Pitres",
     "address": "Route Frontière, Anse-à-Pitres",
