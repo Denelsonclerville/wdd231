@@ -207,7 +207,7 @@ async function initDirectory() {
       filterAll.onclick = (e) => {
         setActive(e.target);
         currentData = organizations;
-        currentLimit = 9;
+        currentLimit = 9 ;
         currentShowFounded = false;
         render();
       };
